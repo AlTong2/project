@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MainBtn extends StatelessWidget {
-  const MainBtn({super.key, required this.text, required this.btnFunc, required this.color});
+class LoginBtn extends StatelessWidget {
+  const LoginBtn ({super.key, required this.text, required this.btnFunc, required this.color});
   final String text;
   final VoidCallback btnFunc;
   final Color color;
@@ -11,15 +11,15 @@ class MainBtn extends StatelessWidget {
       width: 200,
       height: 50,
       padding: EdgeInsets.all(5),
-      child: ElevatedButton(onPressed: btnFunc,
-          child: Text(text, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+      child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: color,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20)
+              borderRadius: BorderRadius.circular(20)
             )
           ),
-      ),
+          onPressed: btnFunc,
+          child: Text(text)),
     );
   }
 }
