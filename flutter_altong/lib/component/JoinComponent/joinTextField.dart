@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoginTextField extends StatelessWidget {
-  const LoginTextField({super.key, required this.icon, required this.text, required this.con});
+class JoinTextField extends StatelessWidget {
+  const JoinTextField({super.key, required this.icon, required this.text, required this.con});
   final IconData icon;
   final String text;
   final TextEditingController con;
@@ -17,6 +17,6 @@ class LoginTextField extends StatelessWidget {
           ],
         ),
       ),
-    );
+    );;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_altong/component/MainComponent/mainBtn.dart';
 import 'package:flutter_altong/component/MainComponent/mainImg.dart';
+import 'package:flutter_altong/constants/constants.dart';
 import 'package:flutter_altong/controller/mainController.dart';
 import 'package:flutter_altong/screen/altongJoin.dart';
 import 'package:flutter_altong/screen/altongLogin.dart';
@@ -22,8 +23,8 @@ class AltongMain extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               MainImg(image: Image.asset("img/logo_altong.gif", width: 200,height: 200,),),
-              MainBtn(text: loginBtnText, btnFunc: () => Get.find<MainController>().toLogin(), color: Colors.brown),
-              MainBtn(text: joinBtnText, btnFunc: () => Get.find<MainController>().toJoin(), color: Colors.brown),
+              MainBtn(text: loginBtnText, btnFunc: () => Get.find<MainController>().toLogin(), color: AppColors.btnColor),
+              MainBtn(text: joinBtnText, btnFunc: () => Get.find<MainController>().toJoin(), color: AppColors.btnColor),
             ],
           ),
         ),
