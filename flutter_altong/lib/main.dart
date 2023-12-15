@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_altong/screen/altongMain.dart';
+import 'package:flutter_altong/screen/alt_01_start.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      home: AltongMain(),
+      home: ALT01Start(),
     );
   }
 }

@@ -1,15 +1,17 @@
-import 'package:flutter_altong/screen/altongJoin.dart';
-import 'package:flutter_altong/screen/altongLogin.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_altong/screen/alt_06_exercise.dart';
+import 'package:flutter_altong/screen/alt_05_home.dart';
+import 'package:flutter_altong/screen/alt_07_my_page.dart';
 import 'package:get/get.dart';
 
 class MainController extends GetxController{
 
-  void toLogin(){
-    Get.to(AlTongLogin());
-  }
+  RxInt index = 1.obs;
+  // List<StatelessWidget> page_list = [AltongExercise(), AltongHome(), AltongMyPage()];
 
-  void toJoin(){
-    Get.to(AlTongJoin());
+  void onItemTepped(int i){
+      index.value = i;
+      print(index);
   }
 
 }

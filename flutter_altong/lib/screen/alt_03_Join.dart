@@ -5,8 +5,8 @@ import 'package:flutter_altong/constants/constants.dart';
 import 'package:flutter_altong/controller/joinController.dart';
 import 'package:get/get.dart';
 
-class AlTongJoin extends StatelessWidget {
-  const AlTongJoin ({super.key});
+class ALT03Join extends StatelessWidget {
+  const ALT03Join ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +26,23 @@ class AlTongJoin extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(joinText),backgroundColor: AppColors.btnColor,),
       body: SafeArea(
-        child: Column(
-          children: [
-            JoinTextField(icon: Icons.account_circle, text: idText, con: idCon),
-            JoinTextField(icon: Icons.email, text: emailText, con: emailCon),
-            //TODO 눈모양해서 비밀번호 표시
-            JoinTextField(icon: Icons.key, text: pwText, con: pwCon),
-            JoinTextField(icon: Icons.key, text: pwConfirmText, con: pwconfirmCon),
-            //TODO 칼로리 뒷부분 Kcal글자 표시
-            JoinTextField(icon: Icons.directions_run, text: kcalText, con: kcalCon),
-            SizedBox(height: 50,),
-            JoinBtn(text: joinText, btnFunc: () => Get.find<JoinController>().joinFunc(), color: AppColors.btnColor),
-          ],
+        child: Container(
+          decoration: BoxDecoration(
+              color: AppColors.appBackground
+          ),
+          child: Column(
+            children: [
+              JoinTextField(icon: Icons.account_circle, text: idText, con: idCon),
+              JoinTextField(icon: Icons.email, text: emailText, con: emailCon),
+              //TODO 눈모양해서 비밀번호 표시
+              JoinTextField(icon: Icons.key, text: pwText, con: pwCon),
+              JoinTextField(icon: Icons.key, text: pwConfirmText, con: pwconfirmCon),
+              //TODO 칼로리 뒷부분 Kcal글자 표시
+              JoinTextField(icon: Icons.directions_run, text: kcalText, con: kcalCon),
+              SizedBox(height: 50,),
+              JoinBtn(text: joinText, btnFunc: () => Get.find<JoinController>().joinFunc(), color: AppColors.btnColor),
+            ],
+          ),
         ),
       ),
     );

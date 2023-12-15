@@ -5,8 +5,8 @@ import 'package:flutter_altong/constants/constants.dart';
 import 'package:flutter_altong/controller/loginController.dart';
 import 'package:get/get.dart';
 
-class AlTongLogin extends StatelessWidget {
-  const AlTongLogin ({super.key});
+class ALT02Login extends StatelessWidget {
+  const ALT02Login ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,25 +24,30 @@ class AlTongLogin extends StatelessWidget {
         title: Text(loginText),
         backgroundColor: AppColors.btnColor,),
       body: SafeArea(
-      child: Column(
-        children: [
-          LoginTextField(
-            con: idCon,
-            icon: Icons.account_circle,
-            text: idText,
-          ),
-          LoginTextField(
-            con: pwCon,
-            icon: Icons.key,
-            text: passwordText,
-          ),
-          SizedBox(height: 50,),
-          LoginBtn(
-            text: loginText,
-            btnFunc: ()=> Get.find<LoginController>().loginFunc(),
-            color: AppColors.btnColor,
-          )
-        ],
+      child: Container(
+        decoration: BoxDecoration(
+            color: AppColors.appBackground
+        ),
+        child: Column(
+          children: [
+            LoginTextField(
+              con: idCon,
+              icon: Icons.account_circle,
+              text: idText,
+            ),
+            LoginTextField(
+              con: pwCon,
+              icon: Icons.key,
+              text: passwordText,
+            ),
+            SizedBox(height: 50,),
+            LoginBtn(
+              text: loginText,
+              btnFunc: ()=> Get.find<LoginController>().loginFunc(),
+              color: AppColors.btnColor,
+            )
+          ],
+        ),
       ), 
     ),
     );
