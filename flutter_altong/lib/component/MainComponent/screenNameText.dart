@@ -7,7 +7,7 @@ class ScreenName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 12,left: 16,bottom: 4),
+      padding: EdgeInsets.only(top: 3,left: 10,bottom: 4),
       child: Text(name, style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold),),
     );
   }

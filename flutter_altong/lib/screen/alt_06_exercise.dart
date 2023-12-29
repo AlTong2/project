@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_altong/component/ExerciseRoutineComponent/newRoutineBtn.dart';
-import 'package:flutter_altong/component/ExerciseRoutineComponent/routineListItem.dart';
+import 'package:flutter_altong/component/ExerciseComponent/deleteModal.dart';
+import 'package:flutter_altong/component/ExerciseComponent/exerciseItem.dart';
+import 'package:flutter_altong/component/ExerciseComponent/exerciseRestTime.dart';
+import 'package:flutter_altong/component/ExerciseComponent/exerciseBtn.dart';
+import 'package:flutter_altong/component/ExerciseComponent/routineListItem.dart';
+import 'package:flutter_altong/component/ExerciseComponent/updateModal.dart';
 import 'package:flutter_altong/component/MainComponent/screenNameText.dart';
 import 'package:flutter_altong/constants/constants.dart';
+import 'package:flutter_altong/controller/alt_06_exerciseController.dart';
+import 'package:flutter_altong/screen/alt_10_routine_setting.dart';
+import 'package:get/get.dart';
 import 'package:toggle_list/toggle_list.dart';
 import 'package:toggle_list/src/toggle_list_item.dart';
 
@@ -13,156 +20,131 @@ class ALT06Exercise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String exercise = "운동";
+    Get.put((ExerciseController()));
+    var scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      body: SafeArea(
-        child: ListView(
-          children: [
-            ScreenName(name: exercise),
-            Container(
-              height: 550,
-              margin: EdgeInsets.all(10),
-              child: ToggleList(
-                children: [
-                  ToggleListItem(
-                    title: Text("루틴 1"),
-                    content: Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("운동"),
-                              Text("추가")
-                            ],
-                          ),
-                            // TODO 운동 아이템으로 나누기 ?
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text("스쿼트"),
-                                Text("20개/5세트"),
-                                Row(
-                                  children: [
-                                    Text("수정"),
-                                    Text("/"),
-                                    Text("삭제"),
-                                  ],
-                                )
-                              ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("푸시업"),
-                              Text("20개/5세트"),
-                              Row(
-                                children: [
-                                  Text("수정"),
-                                  Text("/"),
-                                  Text("삭제"),
-                                ],
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("세트당 휴식시간"),
-                              Row(
-                                children: [
-                                  // TODO 시간은 설정하도록
-                                  Text("1분"),
-                                ],
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                  ),
-                ),
-                  ToggleListItem(
-                    title: Text("루틴 2"),
-                    content: Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("운동"),
-                              Text("추가")
-                            ],
-                          ),
-                          // TODO 운동 아이템으로 나누기 ?
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("스쿼트"),
-                              Text("30개/5세트"),
-                              Row(
-                                children: [
-                                  Text("수정"),
-                                  Text("/"),
-                                  Text("삭제"),
-                                ],
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("풀업"),
-                              Text("10개/5세트"),
-                              Row(
-                                children: [
-                                  Text("수정"),
-                                  Text("/"),
-                                  Text("삭제"),
-                                ],
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text("푸시업"),
-                              Text("20개/5세트"),
-                              Row(
-                                children: [
-                                  Text("수정"),
-                                  Text("/"),
-                                  Text("삭제"),
-                                ],
-                              )
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("세트당 휴식시간"),
-                              Row(
-                                children: [
-                                  // TODO 시간은 설정하도록
-                                  Text("1분"),
-                                ],
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
+        resizeToAvoidBottomInset: false,
+        key: scaffoldKey,
+        appBar: AppBar(
+          title: ScreenName(name: exercise),
+          backgroundColor: AppColors.mainColor,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.add, size: 32), // 다른 아이콘으로 변경
+              onPressed: () {
+                scaffoldKey.currentState!.openEndDrawer();
+              },
             ),
-            // TODO 루틴 추가방법 : modal ?
-            NewRoutineBtn()
           ],
         ),
-      ),
+        endDrawer: Drawer(
+          child: ALT10RoutineSetting(),
+          width: double.infinity,
+        ),
+        body : SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+                color: AppColors.appBackground
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 499,
+                  margin: EdgeInsets.all(10),
+                  child: Obx(
+                    () {
+                      return ToggleList(
+                      children:
+                      List.generate(Get.find<ExerciseController>().routineList.length, (index) =>
+                          ToggleListItem(
+                              title: Container(
+                                height: 45,
+                                child: RadioListTile<String>(
+                                    controlAffinity: ListTileControlAffinity.leading,
+                                      title: Text("${Get.find<ExerciseController>().routineList[index]["value"]["routine_name"]}"),
+                                      value: Get.find<ExerciseController>().routineList[index]["key"],
+                                      groupValue: Get.find<ExerciseController>().selectKey.value,
+                                      onChanged: (value){
+                                        Get.find<ExerciseController>().selectKey(value);
+                                      },
+                                ),
+                              ),
+                              content: Padding(
+                                padding: EdgeInsets.all(20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("운동 리스트"),
+                                        // 삭제 기능
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                              width : 42,
+                                              child: TextButton(
+                                                onPressed: () {
+                                                  showModalBottomSheet(
+                                                    context: context,
+                                                    isScrollControlled: true,
+                                                    builder: (BuildContext context) {
+                                                      return StatefulBuilder(
+                                                        builder: (BuildContext innerContext, StateSetter setState) {
+                                                          return UpdateModal(
+                                                            routine: Get.find<ExerciseController>().routineList[index],
+                                                          );
+                                                        },
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: Text("수정"),
+                                              ),
+                                            ),
+                                            Text("/"),
+                                            SizedBox(
+                                              width: 42,
+                                              child: TextButton(onPressed: () {
+                                                showModalBottomSheet(context: context, builder: (BuildContext) {
+                                                  return DeleteModal(routineKey: Get.find<ExerciseController>().routineList[index]["key"]);
+                                                } );
+                                              } ,child: Text("삭제")),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: Get.find<ExerciseController>().routineList[index]["value"]["routine_list"].length,
+                                      itemBuilder: (context, innerIndex) {
+                                        return ExerciseItem(
+                                          ExerciseName: Get.find<ExerciseController>().routineList[index]["value"]["routine_list"][innerIndex]["exercise"],
+                                          count: Get.find<ExerciseController>().routineList[index]["value"]["routine_list"][innerIndex]["count"],
+                                          set: Get.find<ExerciseController>().routineList[index]["value"]["routine_list"][innerIndex]["set"],
+                                        );
+                                      },
+                                    ),
+                                    SizedBox(height: 10,),
+                                    ExerciseRestTime(time: Get.find<ExerciseController>().routineList[index]["value"]["rest_time"])
+                                  ],
+                                ),
+                          )
+                      ),
+                    )
+                    );
+                    } // obx function end
+                  ),
+                ),
+                // TODO 루틴 추가방법 : modal ?
+                //Center(child: ExerciseScreenBtn(text: "새 루틴 추가", exerciseFunc: Get.find<ExerciseController>().goRoutineSetting,)),
+                Center(child: ExerciseScreenBtn(text: "루틴 시작",  exerciseFunc: (){} ,))
+              ],
+            ),
+          ),
+        )
     );
   }
 }
