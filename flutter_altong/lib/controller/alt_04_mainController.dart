@@ -6,12 +6,11 @@ import 'package:get/get.dart';
 
 class MainController extends GetxController{
 
-  RxInt index = 1.obs;
+  RxInt index = 0.obs;
   // List<StatelessWidget> page_list = [AltongExercise(), AltongHome(), AltongMyPage()];
 
   void onItemTepped(int i){
       index.value = i;
-      print(index);
   }
 
 }

@@ -14,7 +14,7 @@ class MyPageBtn extends StatelessWidget {
       child: ElevatedButton(onPressed: btnFunc,
         child: Text(text, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.btnColor,
+            backgroundColor: AppColors.mainColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20)
             )

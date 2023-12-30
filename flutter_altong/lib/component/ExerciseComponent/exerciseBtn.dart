@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_altong/constants/constants.dart';
 
-class NewRoutineBtn extends StatelessWidget {
-  const NewRoutineBtn({super.key});
-
+class ExerciseScreenBtn extends StatelessWidget {
+  const ExerciseScreenBtn({super.key, required this.text, required this.exerciseFunc});
+  final String text;
+  final VoidCallback exerciseFunc;
   @override
   Widget build(BuildContext context) {
     return
       Container(
-        width: 100,
+        width: 250,
         height: 50,
+        margin: EdgeInsets.only(top: 10),
         child: ElevatedButton(style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.btnColor,
+            backgroundColor: AppColors.mainColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20)
             )
         )
-            ,onPressed: (){},
+            ,onPressed: exerciseFunc,
             child:
-            Text("새 루틴 추가")
+            Text(text)
         ),
       );
   }
