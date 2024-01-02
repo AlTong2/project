@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/editProfile' : (context) => ALT09EditProfilePage(),
         '/main': (context) => ALT04Main(),
+        '/start' : (context) => ALT01Start(),
       },
       home: ALT01Start(),
     );

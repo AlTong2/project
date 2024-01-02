@@ -107,7 +107,10 @@ class ALT06Exercise extends StatelessWidget {
                                             SizedBox(
                                               width: 42,
                                               child: TextButton(onPressed: () {
-                                                showModalBottomSheet(context: context, builder: (BuildContext) {
+                                                showModalBottomSheet(
+                                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45)),
+                                                  context: context,
+                                                  builder: (BuildContext) {
                                                   return DeleteModal(routineKey: Get.find<ExerciseController>().routineList[index]["key"]);
                                                 } );
                                               } ,child: Text("삭제")),

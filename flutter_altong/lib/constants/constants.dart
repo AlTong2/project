@@ -10,5 +10,7 @@ class AppColors {
   static const Color bottomNoSelectBtnColor = Color(0xFF9E9E9E);
   static const Color progressBarGauge = Color(0xFFf5e667);
   static const Color progressBarBackground = Color(0xFFFFFFFF);
+  static const Color contentColorCyan = Color(0xFF50E4FF);
+  static const Color contentColorBlue = Color(0xFF2196F3);
 
 }

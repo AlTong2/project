@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class LoginPasswordTextField extends StatefulWidget {
-  const LoginPasswordTextField({super.key, required this.icon, required this.text, required this.con});
+  const LoginPasswordTextField({super.key, required this.icon, required this.text, required this.con, required this.validator});
   final IconData icon;
   final String text;
   final TextEditingController con;
+  final FormFieldValidator<String?>? validator;
 
   @override
   State<LoginPasswordTextField> createState() => _LoginPasswordTextFieldState();
@@ -48,6 +49,7 @@ class _LoginPasswordTextFieldState extends State<LoginPasswordTextField> {
           },
         ),
       ),
+      validator: widget.validator,
     );
   }
 }

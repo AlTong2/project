@@ -14,6 +14,17 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
   DateTime? _selectedDay;
   CalendarFormat _calendarFormat = CalendarFormat.month;
   List<String> days = ['_', '월', '화', '수', '목', '금', '토', '일'];
+
+  final Map<DateTime?, dynamic> _events = {
+    DateTime(2023, 12, 18) : DateTime(2023, 12, 18),
+    DateTime(2023, 12, 19) : DateTime(2023, 12, 19),
+    DateTime(2023, 12, 20) : DateTime(2023, 12, 20),
+    DateTime(2023, 12, 21) : DateTime(2023, 12, 21),
+    DateTime(2023, 12, 22) : DateTime(2023, 12, 22),
+    DateTime(2023, 12, 23) : DateTime(2023, 12, 23),
+    DateTime(2023, 12, 29) : DateTime(2023, 12, 29)
+  };
+
   @override
   void initState() {
     super.initState();
@@ -23,6 +34,7 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
 
   @override
   Widget build(BuildContext context) {
+    print(_events[DateTime(2023, 12, 23)]);
     return Expanded(
       child: Container(
         child: TableCalendar(
@@ -81,8 +93,22 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
           calendarBuilders: CalendarBuilders(
             dowBuilder: (context, day) {
               return Center(child: Text(days[day.weekday])) ;
-            }
+            },
+            markerBuilder: (context, date, events) {
+              DateTime _date = DateTime(date.year, date.month, date.day);
+              if ( isSameDay(_date, _events[_date] )) {
+                return Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  padding: const EdgeInsets.only( left: 5,bottom: 10),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(Icons.check, color: Colors.red, size: 35,),
+                );
+              }
+            },
           ),
+
         ),
       ),
     );

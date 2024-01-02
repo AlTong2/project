@@ -6,14 +6,39 @@ import 'package:flutter_altong/constants/constants.dart';
 import 'package:flutter_altong/controller/alt_02_loginController.dart';
 import 'package:get/get.dart';
 
-class ALT02Login extends StatelessWidget {
+class ALT02Login extends StatefulWidget {
   const ALT02Login ({super.key});
+
+  @override
+  State<ALT02Login> createState() => _ALT02LoginState();
+}
+
+class _ALT02LoginState extends State<ALT02Login> {
+
+  TextEditingController emailCon = TextEditingController();
+  TextEditingController pwCon = TextEditingController();
+  String _email = "";
+  String _pw = "";
+
+  @override
+  void initState () {
+    super.initState();
+    emailCon.addListener(() {
+      setState(() {
+        _email = emailCon.text;
+      });
+    });
+    pwCon.addListener(() {
+      setState(() {
+        _pw = pwCon.text;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     Get.put(LoginController());
-    TextEditingController emailCon = TextEditingController();
-    TextEditingController pwCon = TextEditingController();
+
 
     String idText = "이메일";
     String passwordText = "비밀번호";
@@ -40,7 +65,7 @@ class ALT02Login extends StatelessWidget {
                 icon: Icons.email,
                 text: idText,
               ),
-              LoginPasswordTextField(icon: Icons.key, text: passwordText, con: pwCon),
+              LoginPasswordTextField(icon: Icons.key, text: passwordText, con: pwCon, validator: null),
               SizedBox(height: 50,),
               LoginBtn(
                 text: loginText,

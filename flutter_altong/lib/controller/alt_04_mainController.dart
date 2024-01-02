@@ -11,6 +11,7 @@ class MainController extends GetxController{
 
   void onItemTepped(int i){
       index.value = i;
+      print(index);
   }
 
 }

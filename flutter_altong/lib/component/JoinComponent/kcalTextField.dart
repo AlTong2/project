@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class KcalTextField extends StatelessWidget {
   const KcalTextField({super.key, required this.icon, required this.text, required this.con});
@@ -18,6 +19,10 @@ class KcalTextField extends StatelessWidget {
         ),
         suffixText: "Kcal",
       ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly,
+      ]
     );
   }
 }
