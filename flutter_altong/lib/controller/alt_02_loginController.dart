@@ -25,7 +25,8 @@ class LoginController extends GetxController{
         print("로그인 성공 : ${user}");
         Map<String, dynamic> arguments = {
           'user': user,
-          'kcal': kcal
+          'kcal': kcal,
+          'main' : 0
         };
         Get.offAllNamed("/main", arguments: arguments);
       }

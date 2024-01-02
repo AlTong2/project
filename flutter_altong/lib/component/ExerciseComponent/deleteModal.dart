@@ -8,6 +8,8 @@ class DeleteModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 350,
+      height: 200,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

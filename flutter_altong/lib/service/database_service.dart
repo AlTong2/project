@@ -88,4 +88,25 @@ class DatabaseService{
     }
   }
 
+  // 칼로리 업데이트
+  Future<void> fireBaseUpdateKcal(name, key, int kcal) async {
+    // 회원 정보 가져오기
+    var auth = FirebaseAuth.instance;
+    if (auth.currentUser != null) {
+      String? uid = auth.currentUser?.uid;
+      String? email = auth.currentUser?.email;
+      FirebaseDatabase database = FirebaseDatabase.instance;
+      DatabaseReference dbref = database.ref("member_info");
+      print("●●●●●●●●●●●●●●칼로리 ? ${kcal}");
+      return Future.delayed(Duration(seconds: 3)).then((value) async {
+        await dbref.child('$uid').update({
+          'email' : email,
+          'kcal': kcal,
+          'name' : name
+        });
+      }
+      );
+    }
+  }
+
 }

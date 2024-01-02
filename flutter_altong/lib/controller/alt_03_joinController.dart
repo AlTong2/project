@@ -14,9 +14,8 @@ class JoinController extends GetxController{
       );
       if(credential.user != null){
         // uid, email, name, kcal을 등록
-        createNewUser(uid: credential.user!.uid,email: email ,name: name, kcal : int.parse(kcal) );
+        await createNewUser(uid: credential.user!.uid,email: email ,name: name, kcal : int.parse(kcal) );
       }
-
       Get.offAll(() => ALT01Start());
     } catch (e) {
       print("회원가입 실패: $e");
@@ -38,5 +37,15 @@ class JoinController extends GetxController{
         });
       }
     });
+  }
+
+  String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return '비밀번호를 입력해주세요.';
+    } else if (value.length < 6) {
+      return '비밀번호를 6자 이상 입력해주세요.';
     }
+    return null; // 유효성 검사 통과
+  }
+
  }

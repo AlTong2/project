@@ -1,7 +1,6 @@
 import 'package:chat_bubbles/chat_bubbles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_altong/component/ChatComponent/answerChat.dart';
-import 'package:flutter_altong/component/ChatComponent/senderChat.dart';
+import 'package:flutter_altong/component/ChatComponent/chatBubble.dart';
 import 'package:flutter_altong/component/MainComponent/screenNameText.dart';
 import 'package:flutter_altong/constants/constants.dart';
 import 'package:flutter_altong/controller/alt_08_chatController.dart';
@@ -45,11 +44,7 @@ class ALT08ChatPage extends StatelessWidget {
                                 physics: NeverScrollableScrollPhysics(),
                                 itemCount: Get.find<ChatController>().messages.length,
                                 itemBuilder: (context, index) {
-                                  if(index % 2 == 0){
-                                    return ListTile( title : SenderChat(text: Get.find<ChatController>().messages[index]));
-                                  } else {
-                                    return ListTile( title : AnswerChat(text: Get.find<ChatController>().messages[index]));
-                                  }
+                                  return ListTile( title : ChatBubble(text: Get.find<ChatController>().messages[index], answer: Get.find<ChatController>().answer[index]));
                                 },
                               )),
                               SizedBox(
