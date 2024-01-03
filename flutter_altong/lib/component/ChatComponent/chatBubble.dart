@@ -13,7 +13,7 @@ class ChatBubble extends StatelessWidget {
         text: text,
         color: AppColors.bottomSelectBtnColor,
         textStyle: TextStyle(
-          fontSize: 20,
+          fontSize: 14,
           color: Colors.white,
         ),
       );
@@ -22,7 +22,7 @@ class ChatBubble extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(top: 10, left: 10),
+            padding: EdgeInsets.only(top: 10),
             child: Row(
               children: [
                 Container(
@@ -37,13 +37,14 @@ class ChatBubble extends StatelessWidget {
                       )
                   ),
                 ),
-                Text("알통이", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w200),)
+                Text("알통이", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300),)
               ],
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 40),
+            padding: EdgeInsets.only(left: 30),
             child: Container(
+              width: MediaQuery.of(context).size.width *0.85,
               child: Row(
                 children: [
                   BubbleSpecialOne(
@@ -51,7 +52,7 @@ class ChatBubble extends StatelessWidget {
                     color: AppColors.bottomNoSelectBtnColor,
                     isSender: false,
                     textStyle: TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                       color: Colors.white,
                     ),
                   ),

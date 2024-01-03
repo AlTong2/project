@@ -6,11 +6,14 @@ class PieChartIndicator extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(Icons.square, color: color,),
-        Text(text)
-      ],
+    return Container(
+      margin: EdgeInsets.only(bottom: 5),
+      child: Row(
+        children: [
+          Icon(Icons.square, color: color,size: 15,),
+          Text(text, style: TextStyle(fontSize: 12),)
+        ],
+      ),
     );
   }
 }

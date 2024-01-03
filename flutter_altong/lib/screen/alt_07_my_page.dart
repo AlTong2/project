@@ -19,7 +19,7 @@ class ALT07MyPage extends StatelessWidget {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text(myPage),
+        title: ScreenName(name: myPage),
         backgroundColor: AppColors.mainColor,
         actions: <Widget>[
           IconButton(

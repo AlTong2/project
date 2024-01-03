@@ -94,7 +94,6 @@ class _ALT03JoinState extends State<ALT03Join> {
             ),
             child: Column(
               children: [
-                //JoinTextField(icon: Icons.account_circle, text: idText, con: idCon),
                 JoinTextField(icon: Icons.email, text: emailText, con: emailCon),
                 JoinTextField(icon: Icons.man, text: nameText, con: nameCon),
                 LoginPasswordTextField(icon: Icons.key, text: pwText, con: pwCon, validator: null),

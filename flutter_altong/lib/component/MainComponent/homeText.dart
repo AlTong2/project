@@ -6,14 +6,14 @@ class MainText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String userText = "${user}님, 이번주도 화이팅!";
+    String userText = "${user}님, 이번주도 화이팅!!";
     // String text = "";
     return Container(
-      padding: EdgeInsets.only(left: 20),
+      padding: EdgeInsets.only(top : 10,left: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(userText, style: TextStyle(fontSize: 24),),
+          Text(userText, style: TextStyle(fontSize: 16),),
           // Text(text, style: TextStyle(fontSize: 28),),
         ],
       ),

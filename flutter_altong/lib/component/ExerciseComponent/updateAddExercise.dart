@@ -13,7 +13,7 @@ class UpdateAddExercise extends StatelessWidget {
     return Stack(
         children: [
           Center(
-              child: Text("종목 추가", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))),
+              child: Text("종목 추가", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500))),
           Obx(() => Container(
             margin: EdgeInsets.only(top: 30),
             child: Column(
@@ -30,18 +30,18 @@ class UpdateAddExercise extends StatelessWidget {
           ),),
           Obx(
                 () => Positioned(
-              top: 30,
-              left: 140,
+                top: MediaQuery.of(context).size.height * 0.05,
+                left: MediaQuery.of(context).size.height * 0.17,
               child: Row(
                 children: [
                   IconButton(
                       onPressed: () => Get.find<ExerciseController>().setCount(1),
-                      icon: Icon(Icons.add)
+                      icon: Icon(Icons.add, size: 18,)
                   ),
-                  Text("${Get.find<ExerciseController>().count}개"),
+                  Text("${Get.find<ExerciseController>().count}개", style: TextStyle(fontSize: 12)),
                   IconButton(
                       onPressed: () => Get.find<ExerciseController>().setCount(0),
-                      icon: Icon(Icons.remove)
+                      icon: Icon(Icons.remove, size: 18,)
                   )
                 ],
               ),
@@ -49,24 +49,24 @@ class UpdateAddExercise extends StatelessWidget {
           ),
           Obx(
                 () => Positioned(
-              top: 30,
-              left: 250,
+                top: MediaQuery.of(context).size.height * 0.05,
+                left: MediaQuery.of(context).size.height * 0.305,
               child: Row(
                 children: [
                   IconButton(
                       onPressed: () =>Get.find<ExerciseController>().setSet(1),
-                      icon: Icon(Icons.add)),
-                  Text("${Get.find<ExerciseController>().set}세트"),
+                      icon: Icon(Icons.add, size: 18,)),
+                  Text("${Get.find<ExerciseController>().set}세트", style: TextStyle(fontSize: 12)),
                   IconButton(
                       onPressed: () =>Get.find<ExerciseController>().setSet(0),
-                      icon: Icon(Icons.remove))
+                      icon: Icon(Icons.remove, size: 18,))
                 ],
               ),
             ),
           ),
           Positioned(
-            bottom: 20,
-            right: 50,
+            bottom: MediaQuery.of(context).size.height * 0.02,
+            right: MediaQuery.of(context).size.width * 0.03,
             child: SmallButton(text: "추가",
                 btnFunc: () =>
                     Get.find<ExerciseController>().exerciseUpdateConfirm(),

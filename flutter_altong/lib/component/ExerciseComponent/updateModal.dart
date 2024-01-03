@@ -70,7 +70,7 @@ class _UpdateModalState extends State<UpdateModal> {
             width: double.infinity,
             child: Center(
               child: SizedBox(
-                width: 350,
+                width: MediaQuery.of(context).size.width * 0.8,
                 child: Obx(
                         () {
                       final routineController = Get.find<ExerciseController>();
@@ -80,7 +80,7 @@ class _UpdateModalState extends State<UpdateModal> {
                         controller: routineNameCon,
                         onChanged: (value) {Get.find<ExerciseController>().updateRoutineNameText(value);},
                         decoration: InputDecoration(
-                            label: Text('루틴 명', style: TextStyle(fontSize: 24))
+                            label: Text('루틴 명', style: TextStyle(fontSize: 18))
                         ),
                       );
                     }
@@ -92,8 +92,8 @@ class _UpdateModalState extends State<UpdateModal> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text("운동명", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              Text("개수 / 세트", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text("운동명", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+              Text("개수 / 세트", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
               SizedBox(width: 20,),
             ],
           ),
@@ -119,11 +119,12 @@ class _UpdateModalState extends State<UpdateModal> {
           ),
           SizedBox(height: 20,),
           UpdateAddExercise(),
+          SizedBox(height: 15,),
           UpdateSetRest(),
           SizedBox(
             child: Center(
               child: Container(
-                  width: 300,
+                  width: MediaQuery.of(context).size.width * 0.85,
                   margin: EdgeInsets.only(top: 10),
                   child: MediumButton(text: "루틴 수정하기",
                       btnFunc: (){

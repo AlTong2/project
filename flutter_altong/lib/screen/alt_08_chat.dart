@@ -11,7 +11,7 @@ class ALT08ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String Chat = "채팅(GPT 3.5 Turbo)";
+    String chat = "채팅(GPT 3.5 Turbo)";
     Get.put(ChatController());
     return GestureDetector(
       onTap: () {
@@ -19,6 +19,10 @@ class ALT08ChatPage extends StatelessWidget {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: true,
+        appBar:AppBar(
+          title: ScreenName(name: chat),
+          backgroundColor: AppColors.mainColor,
+        ),
         body: SafeArea(
           bottom: true,
           child: Container(
@@ -28,7 +32,6 @@ class ALT08ChatPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ScreenName(name: Chat),
                 SizedBox(height: 20,),
                 Expanded(
                   child: Container(
@@ -60,6 +63,8 @@ class ALT08ChatPage extends StatelessWidget {
                           child: MessageBar(
                             onSend: (_) => Get.find<ChatController>().sendMessage(_),
                             sendButtonColor: AppColors.bottomSelectBtnColor,
+                            messageBarHitText : "질문을 입력해주세요.",
+                            messageBarHintStyle : TextStyle(fontSize: 12),
                             actions: [
                               /*
                               InkWell(
