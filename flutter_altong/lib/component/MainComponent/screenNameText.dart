@@ -8,7 +8,7 @@ class ScreenName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 3,left: 10,bottom: 4),
-      child: Text(name, style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold),),
+      child: Text(name, style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),),
     );
   }
 }

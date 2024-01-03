@@ -87,11 +87,11 @@ class _CalendarModalState extends State<CalendarModal> {
       child: ListView(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 20),
+            margin: EdgeInsets.only(top: 30),
             child: Center(
               child: Text(
                 '${widget.selectedDay?.year}-${widget.selectedDay?.month}-${widget.selectedDay?.day}일 상세 정보',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -100,7 +100,7 @@ class _CalendarModalState extends State<CalendarModal> {
             child: Center(
               child: Text(
                 '운동 데이터 분석',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -108,9 +108,11 @@ class _CalendarModalState extends State<CalendarModal> {
             children: [
               SizedBox(width: 24,),
               Container(
-                margin: EdgeInsets.only(top: 30),
-                width: 250,
-                height: 250,
+                margin: EdgeInsets.only(top: 10),
+                // width: 250,
+                // height: 250,
+                width: MediaQuery.of(context).size.width * 0.55, // 너비 전체 사용
+                height: MediaQuery.of(context).size.height * 0.35,
                 child: PieChart(
                 PieChartData(
                   // sections에 운동별 %표시하는 방법 추가
@@ -244,14 +246,15 @@ class _CalendarModalState extends State<CalendarModal> {
             child: Center(
               child: Text(
                 '일별 칼로리 분석',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
           ),
           // 일별 소모 칼로리 그래프
           Container(
-            width: 250,
-            height: 300,
+            margin: EdgeInsets.only(top: 25),
+            width: MediaQuery.of(context).size.width * 0.55, // 너비 전체 사용
+            height: MediaQuery.of(context).size.height * 0.45,
             child: BarChart(
               BarChartData(
                 // barTouchData

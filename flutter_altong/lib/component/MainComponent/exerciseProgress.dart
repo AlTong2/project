@@ -32,11 +32,11 @@ class ExerciseProgress extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
-            child: Text(curKcal, style: TextStyle(fontSize: 20),),
+            child: Text(curKcal, style: TextStyle(fontSize: 12),),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
-            child: Text(glKcal, style: TextStyle(fontSize: 20),),
+            child: Text(glKcal, style: TextStyle(fontSize: 12),),
           ),
         ],
       )

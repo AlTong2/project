@@ -15,7 +15,7 @@ class SetExercise extends StatelessWidget {
             children: [
               RadioListTile<String>(
                 controlAffinity: ListTileControlAffinity.leading,
-                title: Text("스쿼트"),
+                title: Text("스쿼트", style: TextStyle(fontSize: 13),),
                 value: Get.find<RoutineController>().exerciseList[0],
                 groupValue: Get.find<RoutineController>().selectExercise.value,
                 onChanged: (value) {
@@ -25,7 +25,7 @@ class SetExercise extends StatelessWidget {
               ),
               RadioListTile<String>(
                 controlAffinity: ListTileControlAffinity.leading,
-                title: Text("턱걸이"),
+                title: Text("턱걸이", style: TextStyle(fontSize: 13),),
                 value: Get.find<RoutineController>().exerciseList[1],
                 groupValue: Get.find<RoutineController>().selectExercise.value,
                 onChanged: (value) {
@@ -34,7 +34,7 @@ class SetExercise extends StatelessWidget {
               ),
               RadioListTile<String>(
                 controlAffinity: ListTileControlAffinity.leading,
-                title: Text("팔굽혀펴기"),
+                title: Text("팔굽혀펴기", style: TextStyle(fontSize: 13),),
                 value: Get.find<RoutineController>().exerciseList[2],
                 groupValue: Get.find<RoutineController>().selectExercise.value,
                 onChanged: (value) {
@@ -45,18 +45,18 @@ class SetExercise extends StatelessWidget {
           ),),
           Obx(
                 () => Positioned(
-              top: 0,
-              left: 140,
+              top: MediaQuery.of(context).size.height * 0.01,
+              left: MediaQuery.of(context).size.height * 0.17,
               child: Row(
                 children: [
                   IconButton(
                       onPressed: () => Get.find<RoutineController>().setCount(1),
-                      icon: Icon(Icons.add)
+                      icon: Icon(Icons.add, size: 18,)
                   ),
-                  Text("${Get.find<RoutineController>().count}개"),
+                  Text("${Get.find<RoutineController>().count}개", style: TextStyle(fontSize: 12),),
                   IconButton(
                       onPressed: () => Get.find<RoutineController>().setCount(0),
-                      icon: Icon(Icons.remove)
+                      icon: Icon(Icons.remove, size: 18,)
                   )
                 ],
               ),
@@ -64,24 +64,25 @@ class SetExercise extends StatelessWidget {
           ),
           Obx(
                 () => Positioned(
-              top: 0,
-              left: 250,
+              top: MediaQuery.of(context).size.height * 0.01,
+              left: MediaQuery.of(context).size.height * 0.31,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
                       onPressed: () =>Get.find<RoutineController>().setSet(1),
-                      icon: Icon(Icons.add)),
-                  Text("${Get.find<RoutineController>().set}세트"),
+                      icon: Icon(Icons.add, size: 18,)),
+                  Text("${Get.find<RoutineController>().set}세트", style: TextStyle(fontSize: 12),),
                   IconButton(
                       onPressed: () =>Get.find<RoutineController>().setSet(0),
-                      icon: Icon(Icons.remove))
+                      icon: Icon(Icons.remove, size: 18,))
                 ],
               ),
             ),
           ),
           Positioned(
-            bottom: 20,
-            right: 50,
+            bottom: MediaQuery.of(context).size.height * 0.02,
+            right: MediaQuery.of(context).size.width * 0.03,
             child: SmallButton(text: "추가",
                 btnFunc: () =>
                     Get.find<RoutineController>().exerciseConfirm(),

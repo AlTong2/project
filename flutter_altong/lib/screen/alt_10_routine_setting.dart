@@ -43,13 +43,13 @@ class ALT10RoutineSetting extends StatelessWidget {
           ),
           body: SafeArea(
             child: ListView(
-              physics: NeverScrollableScrollPhysics(),
+              // physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
                   width: double.infinity,
                   child: Center(
                     child: SizedBox(
-                      width: 350,
+                      width: MediaQuery.of(context).size.width * 0.85,
                       child: Obx(
                         () {
                           final routineController = Get.find<RoutineController>();
@@ -71,8 +71,8 @@ class ALT10RoutineSetting extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text("운동명", style: TextStyle(fontSize: 18)),
-                    Text("개수 / 세트", style: TextStyle(fontSize: 18)),
+                    Text("운동명", style: TextStyle(fontSize: 16)),
+                    Text("개수 / 세트", style: TextStyle(fontSize: 16)),
                     SizedBox(width: 20,),
                   ],
                 ),
@@ -105,7 +105,7 @@ class ALT10RoutineSetting extends StatelessWidget {
                 SizedBox(
                   child: Center(
                     child: Container(
-                      width: 300,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       margin: EdgeInsets.only(top: 10),
                       child: MediumButton(text: "루틴 추가",
                           btnFunc: (){

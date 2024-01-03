@@ -83,7 +83,7 @@ class ALT06Exercise extends StatelessWidget {
                                         Row(
                                           children: [
                                             SizedBox(
-                                              width : 42,
+                                              width: MediaQuery.of(context).size.width* 0.14,
                                               child: TextButton(
                                                 onPressed: () {
                                                   showModalBottomSheet(
@@ -100,12 +100,12 @@ class ALT06Exercise extends StatelessWidget {
                                                     },
                                                   );
                                                 },
-                                                child: Text("수정"),
+                                                child: Text("수정", style: TextStyle(fontSize: 12)),
                                               ),
                                             ),
-                                            Text("/"),
+                                            Text("/", style: TextStyle(fontSize: 12)),
                                             SizedBox(
-                                              width: 42,
+                                              width: MediaQuery.of(context).size.width* 0.14,
                                               child: TextButton(onPressed: () {
                                                 showModalBottomSheet(
                                                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45)),
@@ -113,7 +113,7 @@ class ALT06Exercise extends StatelessWidget {
                                                   builder: (BuildContext) {
                                                   return DeleteModal(routineKey: Get.find<ExerciseController>().routineList[index]["key"]);
                                                 } );
-                                              } ,child: Text("삭제")),
+                                              } ,child: Text("삭제", style: TextStyle(fontSize: 12))),
                                             ),
                                           ],
                                         ),

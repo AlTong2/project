@@ -11,7 +11,7 @@ class UpdateSetRest extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("휴식시간 설정", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text("휴식시간 설정", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
