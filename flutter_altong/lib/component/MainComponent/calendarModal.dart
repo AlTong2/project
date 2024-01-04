@@ -12,6 +12,59 @@ class CalendarModal extends StatefulWidget {
 }
 
 class _CalendarModalState extends State<CalendarModal> {
+  // TODO 요일 선택시 해당 요일의 데이터 불러오기
+  List<Map<dynamic, dynamic>> ExerciseData = [
+      {
+        "monday" :
+        {
+           "Squart" :{
+             "count" : 120
+           },
+           "PushUp" : {
+            "count" : 70
+           },
+           "PullUp" : {
+            "count" : 10
+          }
+        },
+        "tuesday" :
+        {
+          "Squart" :{
+            "count" : 75
+          },
+          "PushUp" : {
+            "count" : 60
+          },
+          "PullUp" : {
+            "count" : 20
+          }
+        },
+        "wednesday" :
+        {
+          "Squart" :{
+            "count" : 100
+          },
+          "PushUp" : {
+            "count" : 20
+          },
+          "PullUp" : {
+            "count" : 40
+          }
+        },
+        "thursday" :
+        {
+          "Squart" :{
+            "count" : 55
+          },
+          "PushUp" : {
+            "count" : 25
+          },
+          "PullUp" : {
+            "count" : 15
+          }
+        }
+      }
+  ];
 
   int touchedIndex = -1;
 
@@ -109,8 +162,6 @@ class _CalendarModalState extends State<CalendarModal> {
               SizedBox(width: 24,),
               Container(
                 margin: EdgeInsets.only(top: 10),
-                // width: 250,
-                // height: 250,
                 width: MediaQuery.of(context).size.width * 0.55, // 너비 전체 사용
                 height: MediaQuery.of(context).size.height * 0.35,
                 child: PieChart(

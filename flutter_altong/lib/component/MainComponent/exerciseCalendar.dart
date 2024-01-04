@@ -14,7 +14,7 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
   DateTime? _selectedDay;
   CalendarFormat _calendarFormat = CalendarFormat.month;
   List<String> days = ['_', '월', '화', '수', '목', '금', '토', '일'];
-
+  // TODO 로그인시 해당 유저의 운동한 날짜만 받아와서 데이터 넣기
   final Map<DateTime?, dynamic> _events = {
     DateTime(2023, 12, 18) : DateTime(2023, 12, 18),
     DateTime(2023, 12, 19) : DateTime(2023, 12, 19),
@@ -72,6 +72,7 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
                 context: context,
                 isScrollControlled: true,
                 builder: (BuildContext context) {
+                  // TODO 해당날짜를 불렀을때 컨트롤러로 이동하게 수정 ? 날짜 받아오기 아니면 날짜가지고 modal안에서 설정 ?
                   return CalendarModal(selectedDay: selectedDay);
                 },
               );

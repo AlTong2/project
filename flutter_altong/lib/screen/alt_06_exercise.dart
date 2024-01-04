@@ -141,8 +141,6 @@ class ALT06Exercise extends StatelessWidget {
                     } // obx function end
                   ),
                 ),
-                // TODO 루틴 추가방법 : modal ?
-                //Center(child: ExerciseScreenBtn(text: "새 루틴 추가", exerciseFunc: Get.find<ExerciseController>().goRoutineSetting,)),
                 Center(child: ExerciseScreenBtn(text: "루틴 시작",  exerciseFunc: (){} ,))
               ],
             ),

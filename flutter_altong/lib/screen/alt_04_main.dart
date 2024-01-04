@@ -36,7 +36,7 @@ class _ALT04MainState extends State<ALT04Main> {
       ALT05Home(name : user, kcal : kcal),
       ALT06Exercise(),
       ALT08ChatPage(),
-      ALT07MyPage(),
+      ALT07MyPage(name : user),
     ];
   }
   @override

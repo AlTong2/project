@@ -9,7 +9,6 @@ class LoginController extends GetxController{
 
   void loginFunc(String email, String password) async{
     var auth = FirebaseAuth.instance;
-    //TODO 로그인 기능 추가
     print("로그인 함수");
     try {
       UserCredential credential = await auth.signInWithEmailAndPassword(

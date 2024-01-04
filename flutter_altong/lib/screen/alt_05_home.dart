@@ -18,7 +18,7 @@ class ALT05Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String screenName = "알통이";
-    String userName = name; //TODO DB에서 받아온 유저값으로 변경할것
+    String userName = name;
     int userKcal = kcal;
     return Scaffold(
       appBar:AppBar(

@@ -8,12 +8,12 @@ import 'package:flutter_altong/screen/alt_09_edit_profile.dart';
 import 'package:get/get.dart';
 
 class ALT07MyPage extends StatelessWidget {
-  const ALT07MyPage({super.key});
-
+  const ALT07MyPage({super.key, required this.name});
+  final String name;
   @override
   Widget build(BuildContext context) {
     String myPage = "마이페이지";
-    String user = "test1"; //TODO DB에서 받아온 유저값으로 변경할것
+    String user = name;
     var scaffoldKey = GlobalKey<ScaffoldState>();
     Get.put(MyPageController());
     return Scaffold(

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class ChatController extends GetxController{
-  //TODO 채팅 입력 받았을때 GPT답변 받아오기
   RxList<String> messages = <String>[].obs; // RxList를 사용하여 관찰 가능한 리스트로 만듦
   RxList<bool> answer = <bool>[].obs;
 
@@ -13,8 +12,6 @@ class ChatController extends GetxController{
   void sendMessage(String message) async {
     messages.add(message);
     addTrue(true);
-    //TODO message를 챗gpt로 보내는 코드 작성
-    //TODO 받아온 답변을 messages 추가하는 코드 작성
     String answer = await generateText(message);
     messages.add(answer);
     addTrue(false);
