@@ -8,21 +8,11 @@ class ExerciseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(ExerciseName),
-        SizedBox(),
-        Text("${count}개/${set}세트"),
-        /*
-        Row(
-          children: [
-            // TODO 클릭 가능한 버튼으로 변경필요
-            Text("수정"),
-            Text("/"),
-            Text("삭제"),
-          ],
-        )
-        */
+        Expanded(child: Text(ExerciseName, style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.025),textAlign: TextAlign.center,)),
+        Expanded(child: SizedBox()),
+        Expanded(child: Text("${count} 개 / ${set} 세트", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.025))),
       ],
     );
   }

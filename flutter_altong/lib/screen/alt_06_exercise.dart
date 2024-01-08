@@ -26,7 +26,12 @@ class ALT06Exercise extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         key: scaffoldKey,
         appBar: AppBar(
-          title: ScreenName(name: exercise),
+          title: Row(
+            children: [
+              Image.asset('img/altong_muscle.png', width: MediaQuery.of(context).size.width*0.15,),
+              ScreenName(name: exercise),
+            ],
+          ),
           backgroundColor: AppColors.mainColor,
           actions: <Widget>[
             IconButton(
@@ -50,7 +55,7 @@ class ALT06Exercise extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 499,
+                  height: MediaQuery.of(context).size.height * 0.7,
                   margin: EdgeInsets.all(10),
                   child: Obx(
                     () {
@@ -62,7 +67,8 @@ class ALT06Exercise extends StatelessWidget {
                                 height: 45,
                                 child: RadioListTile<String>(
                                     controlAffinity: ListTileControlAffinity.leading,
-                                      title: Text("${Get.find<ExerciseController>().routineList[index]["value"]["routine_name"]}"),
+                                      title: Text("${Get.find<ExerciseController>().routineList[index]["value"]["routine_name"]}",
+                                                  style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.04),),
                                       value: Get.find<ExerciseController>().routineList[index]["key"],
                                       groupValue: Get.find<ExerciseController>().selectKey.value,
                                       onChanged: (value){
@@ -78,7 +84,7 @@ class ALT06Exercise extends StatelessWidget {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("운동 리스트"),
+                                        Text("운동 리스트",style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03)),
                                         // 삭제 기능
                                         Row(
                                           children: [
@@ -100,7 +106,7 @@ class ALT06Exercise extends StatelessWidget {
                                                     },
                                                   );
                                                 },
-                                                child: Text("수정", style: TextStyle(fontSize: 12)),
+                                                child: Text("수정", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03)),
                                               ),
                                             ),
                                             Text("/", style: TextStyle(fontSize: 12)),
@@ -113,7 +119,7 @@ class ALT06Exercise extends StatelessWidget {
                                                   builder: (BuildContext) {
                                                   return DeleteModal(routineKey: Get.find<ExerciseController>().routineList[index]["key"]);
                                                 } );
-                                              } ,child: Text("삭제", style: TextStyle(fontSize: 12))),
+                                              } ,child: Text("삭제", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03))),
                                             ),
                                           ],
                                         ),

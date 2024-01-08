@@ -13,7 +13,8 @@ class ChatBubble extends StatelessWidget {
         text: text,
         color: AppColors.bottomSelectBtnColor,
         textStyle: TextStyle(
-          fontSize: 14,
+          fontSize: MediaQuery.of(context).size.width * 0.035,
+          fontFamily: 'pre',
           color: Colors.white,
         ),
       );
@@ -26,8 +27,8 @@ class ChatBubble extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  width: 45,
-                  height: 45,
+                  width: MediaQuery.of(context).size.width * 0.1,
+                  height: MediaQuery.of(context).size.width * 0.1,
                   margin: EdgeInsets.only(right: 10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
@@ -37,7 +38,7 @@ class ChatBubble extends StatelessWidget {
                       )
                   ),
                 ),
-                Text("알통이", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300),)
+                Text("알통이", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.035, fontFamily: 'pre',fontWeight: FontWeight.w300),)
               ],
             ),
           ),
@@ -52,7 +53,8 @@ class ChatBubble extends StatelessWidget {
                     color: AppColors.bottomNoSelectBtnColor,
                     isSender: false,
                     textStyle: TextStyle(
-                      fontSize: 14,
+                      fontSize: MediaQuery.of(context).size.width * 0.035,
+                      fontFamily: 'pre',
                       color: Colors.white,
                     ),
                   ),

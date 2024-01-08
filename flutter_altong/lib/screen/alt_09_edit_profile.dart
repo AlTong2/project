@@ -89,6 +89,7 @@ class _ALT09EditProfilePageState extends State<ALT09EditProfilePage> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
+              margin: EdgeInsets.only(left: 10, right: 10),
               decoration: BoxDecoration(
                   color: AppColors.appBackground
               ),

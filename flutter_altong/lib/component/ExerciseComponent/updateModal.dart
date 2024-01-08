@@ -80,7 +80,7 @@ class _UpdateModalState extends State<UpdateModal> {
                         controller: routineNameCon,
                         onChanged: (value) {Get.find<ExerciseController>().updateRoutineNameText(value);},
                         decoration: InputDecoration(
-                            label: Text('루틴 명', style: TextStyle(fontSize: 18))
+                            label: Text('루틴 명', style: TextStyle(fontSize:MediaQuery.of(context).size.width * 0.04, fontFamily: 'pre'))
                         ),
                       );
                     }
@@ -92,8 +92,8 @@ class _UpdateModalState extends State<UpdateModal> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text("운동명", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-              Text("개수 / 세트", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+              Text("운동명", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,fontFamily: 'pre', fontWeight: FontWeight.w500)),
+              Text("개수 / 세트", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,fontFamily: 'pre', fontWeight: FontWeight.w500)),
               SizedBox(width: 20,),
             ],
           ),
@@ -117,9 +117,27 @@ class _UpdateModalState extends State<UpdateModal> {
               },
             )),
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 10,),
+          Container(
+            margin: EdgeInsets.only(left: 10,right: 10),
+            height: 1,
+            width: MediaQuery.of(context).size.width *0.85,
+            decoration:BoxDecoration(
+                color: AppColors.lineGrey
+            ),
+          ),
+          SizedBox(height: 10,),
           UpdateAddExercise(),
-          SizedBox(height: 15,),
+          SizedBox(height: 10,),
+          Container(
+            margin: EdgeInsets.only(left: 10,right: 10),
+            height: 1,
+            width: MediaQuery.of(context).size.width *0.85,
+            decoration:BoxDecoration(
+                color: AppColors.lineGrey
+            ),
+          ),
+          SizedBox(height: 10,),
           UpdateSetRest(),
           SizedBox(
             child: Center(

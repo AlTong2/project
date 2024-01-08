@@ -14,7 +14,7 @@ class KcalTextField extends StatelessWidget {
         label: Row(
           children: [
             Icon(icon),
-            Text(text)
+            Text(text, style: TextStyle(fontFamily: 'pre'))
           ],
         ),
         suffixText: "Kcal",

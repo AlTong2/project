@@ -67,6 +67,19 @@ class ChatController extends GetxController{
     return answer;
   }
 
+  void sendFormat(String gender,String age,String height,String weight,String activityLevel,String goalWeight){
+    String msg = "";
+    msg += "성별 : " + gender + "\n";
+    msg += "나이 : " + age + "\n";
+    msg += "키 : " + height + "\n";
+    msg += "몸무게 : " + weight + "\n";
+    msg += "활동 수준 : " + activityLevel + "\n";
+    msg += "목표 몸무게 : " + goalWeight + "\n";
+    print(msg);
+    sendMessage(msg);
+    Get.back();
+  }
+
 
 
 }

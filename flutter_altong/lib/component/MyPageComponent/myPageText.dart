@@ -11,9 +11,9 @@ class MyPageText extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(userText, style: TextStyle(fontSize: 16),),
+          Text(userText, style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.05, fontFamily: 'kuk'),),
         ],
       ),
-    );;
+    );
   }
 }

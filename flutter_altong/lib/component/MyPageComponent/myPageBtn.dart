@@ -8,11 +8,11 @@ class MyPageBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250,
-      height: 50,
+      width: MediaQuery.of(context).size.width * 0.7,
+      height: MediaQuery.of(context).size.height * 0.06,
       margin:  EdgeInsets.all(10),
       child: ElevatedButton(onPressed: btnFunc,
-        child: Text(text, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+        child: Text(text, style: TextStyle(color: Colors.white,fontFamily: 'pre'),),
         style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.mainColor,
             shape: RoundedRectangleBorder(

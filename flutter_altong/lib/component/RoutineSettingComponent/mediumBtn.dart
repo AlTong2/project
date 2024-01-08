@@ -20,7 +20,7 @@ class MediumButton extends StatelessWidget {
               )
           ),
           onPressed: btnFunc,
-          child: Text(text)),
+          child: Text(text, style: TextStyle(fontFamily: 'pre'),)),
     );;
   }
 }

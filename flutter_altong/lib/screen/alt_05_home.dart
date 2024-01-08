@@ -22,7 +22,12 @@ class ALT05Home extends StatelessWidget {
     int userKcal = kcal;
     return Scaffold(
       appBar:AppBar(
-        title: ScreenName(name: screenName),
+        title: Row(
+          children: [
+            Image.asset('img/altong_normal.png', width: MediaQuery.of(context).size.width*0.15,),
+            ScreenName(name: screenName),
+          ],
+        ),
         backgroundColor: AppColors.mainColor,
       ),
       body: SafeArea(
@@ -40,6 +45,15 @@ class ALT05Home extends StatelessWidget {
                 SizedBox(height: 30,),
                 // TODO DB에서 가져온 칼로리로 계산하여 표시
                 ExerciseProgress(currentKcal: 1600,goalKcal: userKcal),
+                SizedBox(height: 15,),
+                Container(
+                  margin: EdgeInsets.only(left: 10,right: 10),
+                  height: 1,
+                  width: MediaQuery.of(context).size.width,
+                  decoration:BoxDecoration(
+                      color: AppColors.lineGrey
+                  ),
+                ),
                 SizedBox(height: 5,),
                 AppNameText(name: "이번달 운동 기록"),
                 ExerciseCarlendar(),

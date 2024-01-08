@@ -29,10 +29,10 @@ class _bottomNaviState extends State<bottomNavi> {
           Get.find<MainController>().onItemTepped(index);
       },
       items: [ // list
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "홈"),
-        BottomNavigationBarItem(icon: Icon(Icons.directions_run),label: "운동"),
-        BottomNavigationBarItem(icon: Icon(Icons.chat), label: "채팅"),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "마이페이지"),
+        BottomNavigationBarItem(icon: Icon(Icons.home, size: 30,), label: "홈"),
+        BottomNavigationBarItem(icon: Icon(Icons.directions_run, size: 30),label: "운동"),
+        BottomNavigationBarItem(icon: Icon(Icons.chat, size: 30), label: "채팅"),
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle, size: 30), label: "마이페이지"),
       ],
     );
   }

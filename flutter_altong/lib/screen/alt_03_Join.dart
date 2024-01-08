@@ -29,7 +29,7 @@ class _ALT03JoinState extends State<ALT03Join> {
   String nameText = "닉네임";
   String pwText = "비밀번호";
   String pwConfirmText = "비밀번호 확인";
-  String kcalText = "칼로리";
+  String kcalText = "주간 목표 칼로리";
   String _id = "";
   String _email = "";
   String _pw = "";
@@ -86,23 +86,41 @@ class _ALT03JoinState extends State<ALT03Join> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(title: Text(joinText),backgroundColor: AppColors.mainColor,),
+        appBar: AppBar(title: Text(joinText,style: TextStyle(fontFamily: 'pre')), backgroundColor: AppColors.mainColor,),
         body: SafeArea(
             child: Container(
             decoration: BoxDecoration(
                 color: AppColors.appBackground
             ),
-            child: Column(
-              children: [
-                JoinTextField(icon: Icons.email, text: emailText, con: emailCon),
-                JoinTextField(icon: Icons.man, text: nameText, con: nameCon),
-                LoginPasswordTextField(icon: Icons.key, text: pwText, con: pwCon, validator: null),
-                LoginPasswordTextField(icon: Icons.key, text: pwConfirmText, con: pwConfirmCon,
-                    validator: (_pw) => Get.find<JoinController>().validatePassword(_pw)),
-                KcalTextField(icon: Icons.directions_run, text: kcalText, con: kcalCon),
-                SizedBox(height: 50,),
-                JoinBtn(text: joinText, btnFunc: () => Get.find<JoinController>().joinFunc(emailCon.text, pwCon.text, nameCon.text, kcalCon.text), color: AppColors.mainColor),
-              ],
+            child: Container(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Column(
+                children: [
+                  JoinTextField(icon: Icons.email, text: emailText, con: emailCon),
+                  JoinTextField(icon: Icons.man, text: nameText, con: nameCon),
+                  LoginPasswordTextField(icon: Icons.key, text: pwText, con: pwCon, validator: null),
+                  LoginPasswordTextField(icon: Icons.key, text: pwConfirmText, con: pwConfirmCon,
+                      validator: (_pw) => Get.find<JoinController>().validatePassword(_pw)),
+                  KcalTextField(icon: Icons.directions_run, text: kcalText, con: kcalCon),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("이미 회원 이라면?", style :TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.04)),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width* 0.2,
+                        child: TextButton(
+                          onPressed: () {
+
+                          },
+                          child: Text("로그인", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.04)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height:10,),
+                  JoinBtn(text: joinText, btnFunc: () => Get.find<JoinController>().joinFunc(emailCon.text, pwCon.text, nameCon.text, kcalCon.text), color: AppColors.mainColor),
+                ],
+              ),
             ),
           ),
         ),

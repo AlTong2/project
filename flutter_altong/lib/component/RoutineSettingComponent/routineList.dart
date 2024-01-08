@@ -15,12 +15,12 @@ class RoutineList extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Expanded(flex:1,child: SizedBox(width: 20),),
-        Expanded(flex:3,child: Text(exerciseName, textAlign: TextAlign.left,)),
-        Expanded(flex:3,child: Text("${count}개 / ${set}세트", textAlign: TextAlign.left,)),
+        Expanded(flex:3,child: Text(exerciseName, textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.03 ),)),
+        Expanded(flex:3,child: Text("${count}개 / ${set}세트", textAlign: TextAlign.left, style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.03 ))),
         Expanded(flex:2,child: TextButton(onPressed: () {
                                             print("${num} 번 삭제 메소드");
                                             Get.find<RoutineController>().deleteExercise(num);
-                                            }, child: Text("삭제", textAlign: TextAlign.left,)))
+                                            }, child: Text("삭제", textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.03 ))))
       ],
     );
   }

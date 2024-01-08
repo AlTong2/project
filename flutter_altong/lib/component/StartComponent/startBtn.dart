@@ -12,7 +12,7 @@ class MainBtn extends StatelessWidget {
       height: 50,
       padding: EdgeInsets.all(5),
       child: ElevatedButton(onPressed: btnFunc,
-          child: Text(text, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+          child: Text(text, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w100, fontFamily: "pre" ),),
           style: ElevatedButton.styleFrom(
             backgroundColor: color,
             shape: RoundedRectangleBorder(

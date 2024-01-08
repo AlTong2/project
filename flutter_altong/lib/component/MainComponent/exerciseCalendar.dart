@@ -22,7 +22,9 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
     DateTime(2023, 12, 21) : DateTime(2023, 12, 21),
     DateTime(2023, 12, 22) : DateTime(2023, 12, 22),
     DateTime(2023, 12, 23) : DateTime(2023, 12, 23),
-    DateTime(2023, 12, 29) : DateTime(2023, 12, 29)
+    DateTime(2023, 12, 29) : DateTime(2023, 12, 29),
+    DateTime(2024, 1, 3) : DateTime(2024, 1, 3),
+    DateTime(2024, 1, 4) : DateTime(2024, 1, 4)
   };
 
   @override
@@ -67,6 +69,9 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
                 _now = focusedDay;
               });
             } else {
+              print("선택 날되어있던 날 ${_selectedDay}");
+              print("선택 날되어있던 요일 ${_selectedDay?.weekday}");
+              print("일주일 전${_selectedDay?.subtract(Duration(days: 6)).weekday}");
               print("두번 클릭 감지");
               showModalBottomSheet(
                 context: context,

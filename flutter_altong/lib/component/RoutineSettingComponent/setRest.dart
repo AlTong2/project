@@ -13,19 +13,19 @@ class SetRestTime extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("휴식시간 설정", style: TextStyle(fontSize: 16)),
+          Text("휴식시간 설정", style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.04, fontFamily: 'pre')),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("세트당"),
+              Text("세트당",style: TextStyle(fontFamily: 'pre')),
               Obx(
                     () => Row(
                   children: [
+                    IconButton(onPressed: () => Get.find<RoutineController>().setRest(0),
+                        icon: Icon(Icons.remove)),
+                    Text("${Get.find<RoutineController>().rest} 초",style: TextStyle(fontFamily: 'pre'),),
                     IconButton(onPressed: () => Get.find<RoutineController>().setRest(1),
                         icon: Icon(Icons.add)),
-                    Text("${Get.find<RoutineController>().rest} 초"),
-                    IconButton(onPressed: () => Get.find<RoutineController>().setRest(0),
-                        icon: Icon(Icons.remove))
                   ],
                 ),
               ),

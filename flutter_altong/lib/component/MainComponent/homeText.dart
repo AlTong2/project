@@ -13,7 +13,7 @@ class MainText extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(userText, style: TextStyle(fontSize: 16),),
+          Text(userText, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.05, fontFamily: 'kuk'),),
           // Text(text, style: TextStyle(fontSize: 28),),
         ],
       ),

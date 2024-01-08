@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_altong/controller/alt_04_mainController.dart';
+import 'package:flutter_altong/controller/alt_08_chatController.dart';
 import 'package:flutter_altong/screen/alt_01_start.dart';
 import 'package:flutter_altong/service/database_service.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class MyPageController extends GetxController{
     if (FirebaseAuth.instance.currentUser != null) {
       await FirebaseAuth.instance.signOut();
       Get.delete<MainController>();
+      Get.delete<ChatController>();
       Get.offAllNamed("/start");
     }
   }

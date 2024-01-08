@@ -28,7 +28,7 @@ class _LoginPasswordTextFieldState extends State<LoginPasswordTextField> {
         label: Row(
           children: [
             Icon(widget.icon),
-            Text(widget.text)
+            Text(widget.text, style: TextStyle(fontFamily: 'pre'))
           ],
         ),
         hintText: 'Enter your password',

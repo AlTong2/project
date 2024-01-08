@@ -9,7 +9,7 @@ class ExerciseScreenBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       Container(
-        width: 250,
+        width: MediaQuery.of(context).size.width * 0.75,
         height: 50,
         margin: EdgeInsets.only(top: 10),
         child: ElevatedButton(style: ElevatedButton.styleFrom(
@@ -20,7 +20,7 @@ class ExerciseScreenBtn extends StatelessWidget {
         )
             ,onPressed: exerciseFunc,
             child:
-            Text(text)
+            Text(text, style: TextStyle(fontFamily: 'pre'),)
         ),
       );
   }
