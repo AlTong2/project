@@ -105,14 +105,14 @@ class _ALT03JoinState extends State<ALT03Join> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("이미 회원 이라면?", style :TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.04)),
+                      Text("이미 회원 이라면?", style :TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03)),
                       SizedBox(
                         width: MediaQuery.of(context).size.width* 0.2,
                         child: TextButton(
                           onPressed: () {
 
                           },
-                          child: Text("로그인", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.04)),
+                          child: Text("로그인", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03)),
                         ),
                       ),
                     ],

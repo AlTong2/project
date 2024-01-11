@@ -49,7 +49,8 @@ dependencies:
   flutter_keyboard_visibility: ^6.0.0
   fl_chart: ^0.62.0
   http: ^1.1.0
-  flutter_blue: ^0.8.0
+  flutter_blue_plus:
+  intl: ^0.18.1
 
 
 dev_dependencies:

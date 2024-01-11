@@ -43,7 +43,7 @@ class ChatBubble extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 30),
+            padding: EdgeInsets.only(left:MediaQuery.of(context).size.width *0.07, ),
             child: Container(
               width: MediaQuery.of(context).size.width *0.85,
               child: Row(

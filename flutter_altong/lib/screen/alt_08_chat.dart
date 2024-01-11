@@ -70,7 +70,7 @@ class ALT08ChatPage extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                        bottom: 60,
+                        bottom: MediaQuery.of(context).size.height * 0.1,
                         right: 10,
                         child: Container(
                             child: ElevatedButton(
@@ -126,7 +126,7 @@ class ALT08ChatPage extends StatelessWidget {
                                   },
                                 );
                               },
-                              child: Text("운동 관련 질문"),
+                              child: Text("운동 관련 질문", style: TextStyle(color: Colors.white,fontFamily: 'pre')),
                             ),
                         )
                         ),

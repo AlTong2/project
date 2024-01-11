@@ -14,12 +14,13 @@ class LoginBtn extends StatelessWidget {
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: color,
+
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20)
             )
           ),
           onPressed: btnFunc,
-          child: Text(text, style: TextStyle(fontFamily: 'pre'))),
+          child: Text(text, style: TextStyle(color: Colors.white,fontFamily: 'pre'))),
     );
   }
 }

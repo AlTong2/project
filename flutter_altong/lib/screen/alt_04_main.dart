@@ -21,8 +21,11 @@ class ALT04Main extends StatefulWidget {
 class _ALT04MainState extends State<ALT04Main> {
   final String user = Get.arguments["user"];
   final int kcal = Get.arguments["kcal"];
+  final List<String> recordDay = Get.arguments["recordDay"];
+  Map<dynamic, dynamic> record = Get.arguments["record"];
+  final int curKcal = Get.arguments["curKcal"];
   int _index = 0;
-  late List<StatelessWidget> page_list ;//= [ALT05Home(name: widget.name), ALT06Exercise(), ALT08ChatPage(), ALT07MyPage()];
+  late var page_list ;//= [ALT05Home(name: widget.name), ALT06Exercise(), ALT08ChatPage(), ALT07MyPage()];
 
   @override
   void initState() {
@@ -33,10 +36,10 @@ class _ALT04MainState extends State<ALT04Main> {
     // 위젯 목록을 생성할 때 name을 사용하여 각 위젯을 초기화합니다.
     print("사용자 : ${user}");
     page_list = [
-      ALT05Home(name : user, kcal : kcal),
+      ALT05Home(name : user, kcal : kcal, recordDay : recordDay, record : record, curKcal : curKcal),
       ALT06Exercise(),
       ALT08ChatPage(),
-      ALT07MyPage(name : user),
+     ALT07MyPage(name: user)
     ];
   }
   @override

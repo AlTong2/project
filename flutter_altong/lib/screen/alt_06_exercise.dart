@@ -55,7 +55,7 @@ class ALT06Exercise extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.7,
+                  height: MediaQuery.of(context).size.height * 0.65,
                   margin: EdgeInsets.all(10),
                   child: Obx(
                     () {
@@ -147,7 +147,7 @@ class ALT06Exercise extends StatelessWidget {
                     } // obx function end
                   ),
                 ),
-                Center(child: ExerciseScreenBtn(text: "루틴 시작",  exerciseFunc: (){} ,))
+                Center(child: ExerciseScreenBtn(text: "루틴 시작",  exerciseFunc: () => Get.find<ExerciseController>().startRoutine() ,))
               ],
             ),
           ),

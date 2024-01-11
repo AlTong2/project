@@ -20,7 +20,7 @@ class ExerciseScreenBtn extends StatelessWidget {
         )
             ,onPressed: exerciseFunc,
             child:
-            Text(text, style: TextStyle(fontFamily: 'pre'),)
+            Text(text, style: TextStyle(color: Colors.white, fontFamily: 'pre'),)
         ),
       );
   }

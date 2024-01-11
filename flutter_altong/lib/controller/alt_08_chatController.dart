@@ -41,7 +41,7 @@ class ChatController extends GetxController{
           {"role": "user", "content": prompt}
         ],
         //'prompt': prompt,
-        'max_tokens': 500,
+        'max_tokens': 1000,
         'temperature': 0.5,
         'n': 1,
         //'stop': '.'
@@ -75,6 +75,7 @@ class ChatController extends GetxController{
     msg += "몸무게 : " + weight + "\n";
     msg += "활동 수준 : " + activityLevel + "\n";
     msg += "목표 몸무게 : " + goalWeight + "\n";
+    msg += "적절한 운동 루틴과 식단 알려줘! \n";
     print(msg);
     sendMessage(msg);
     Get.back();

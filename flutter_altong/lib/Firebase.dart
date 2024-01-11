@@ -28,6 +28,18 @@ Future<int> getFirebaseUserKcal() async {
   return kcal;
 }
 
+Future<Map<dynamic, dynamic>> getExerciseRecord() async {
+  String user = "";
+  var uid = await FirebaseAuth.instance.currentUser?.uid;
+  var exercise_data = FirebaseDatabase.instance.ref();
+  var child = await exercise_data.child("exercise_data/${uid}").once();
+  var record = child.snapshot.value  as Map<dynamic, dynamic>;
+  print(record);
+  print("기록 : ${record}");
+  return record;
+}
+
+
 /*
 Future<String?> getUID({String? id}) {
   var databaseRef = FirebaseDatabase.instance.ref();

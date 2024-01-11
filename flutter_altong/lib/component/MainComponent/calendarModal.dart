@@ -2,10 +2,12 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_altong/component/MainComponent/chartIndicator.dart';
 import 'package:flutter_altong/constants/constants.dart';
+import 'package:intl/intl.dart';
 
 class CalendarModal extends StatefulWidget {
-  const CalendarModal({super.key, required this.selectedDay});
+  const CalendarModal({super.key, required this.selectedDay, required this.record});
   final DateTime? selectedDay;
+  final Map<dynamic, dynamic> record;
 
   @override
   State<CalendarModal> createState() => _CalendarModalState();
@@ -13,8 +15,9 @@ class CalendarModal extends StatefulWidget {
 
 class _CalendarModalState extends State<CalendarModal> {
   // TODO 요일 선택시 해당 요일부터 1주일 전까지의 데이터 불러오기.
-  List<Map<String, dynamic>> ExerciseData = [
+  List<Map<String, dynamic>> exerciseData = [
     // weekday로 가져올경우 월 = 1 ~ 일 = 7
+    /*
     {
       "2024/01/01" :
       {
@@ -34,68 +37,20 @@ class _CalendarModalState extends State<CalendarModal> {
           "weekday" : 1
         }
       },
-      "2024/01/02" :
-      {
-        "Squat" :
-        {
-          "count" : 75,
-          "weekday" : 2
-        },
-        "PushUp" :
-        {
-          "count" : 60,
-          "weekday" : 2
-        },
-        "PullUp" :
-        {
-          "count" : 20,
-          "weekday" : 2
-        }
-      },
-      "2024/01/03" :
-      {
-        "Squat" :
-        {
-          "count" : 100,
-          "weekday" : 3
-        },
-        "PushUp" :
-        {
-          "count" : 20,
-          "weekday" : 3
-        },
-        "PullUp" :
-        {
-          "count" : 40,
-          "weekday" : 3
-        }
-      },
-      "2024/01/04" :
-      {
-        "Squat" :
-        {
-          "count" : 55,
-          "weekday" : 4
-        },
-        "PushUp" :
-        {
-          "count" : 25,
-          "weekday" : 4
-        },
-        "PullUp" :
-        {
-          "count" : 15,
-          "weekday" : 4
-        }
-      }
     }
+    */
   ];
   List<Map> kcalList = [];
   List<Map> exerciseCountList = [];
   double sumCount = 0.toDouble();
+
   void loadWeekKcal(){
     // TODO 해당 요일부터 1주일간의 운동데이터 체크 ? 해서 칼로리 계산한 Map 생성
-    List<String> keys = ExerciseData[0].keys.toList();
+    //일주일간의 데이터 가져오게 했으니 각 날짜 요일 별로 칼로리 산출하기
+    List<String> keys = [];
+    if(exerciseData.length != 0){
+      keys = exerciseData[0].keys.toList();
+    }
     List<String> weekDays = [
       'Mon',
       'Tue',
@@ -117,16 +72,17 @@ class _CalendarModalState extends State<CalendarModal> {
     for(int j = 0; j < kcalList.length; j++) {
       for (String key in keys) {
         // 요일별 횟수 넣을 Map
-        dynamic value = ExerciseData[0][key]; // 각 키에 해당하는 값 가져오기
+
+        dynamic value = exerciseData[0][key]; // 각 키에 해당하는 값 가져오기
         // print("키: $key, 값: $value");
 
           if(kcalList[j]["day"] == weekDays[value["Squat"]["weekday"]-1]){
             kcalList[j]["kcal"] = kcalList[j]["kcal"] + ((value["Squat"]["count"] * 0.7));
           }
 
-        if(kcalList[j]["day"] == weekDays[value["PushUp"]["weekday"]-1]){
-          kcalList[j]["kcal"] = kcalList[j]["kcal"] + ((value["PushUp"]["count"] * 0.47));
-        }
+          if(kcalList[j]["day"] == weekDays[value["PushUp"]["weekday"]-1]){
+            kcalList[j]["kcal"] = kcalList[j]["kcal"] + ((value["PushUp"]["count"] * 0.47));
+          }
 
         if(kcalList[j]["day"] == weekDays[value["PullUp"]["weekday"]-1]){
           kcalList[j]["kcal"] = kcalList[j]["kcal"] + ((value["PullUp"]["count"] * 0.3));
@@ -138,7 +94,12 @@ class _CalendarModalState extends State<CalendarModal> {
   void loadWeekExercise(){
     sumCount = 0;
     // TODO 해당 요일부터 1주일간의 운동데이터 체크 ? 운동별 개수 체크한 Map생성
-    List<String> keys = ExerciseData[0].keys.toList();
+    List<String> keys = [];
+    if(exerciseData.length != 0){
+      // keys = exerciseData.map((entry) => entry.keys.first).toList();
+      keys = exerciseData[0].keys.toList();
+      print("키킼;키 :${keys}");
+    }
     List<String> exercise = [
       'Squat',
       'PushUp',
@@ -153,7 +114,7 @@ class _CalendarModalState extends State<CalendarModal> {
     }
 
     for (String key in keys) {
-      dynamic value = ExerciseData[0][key]; // 각 키에 해당하는 값 가져오기
+      dynamic value = exerciseData[0][key]; // 각 키에 해당하는 값 가져오기
       for(int i = 0; i < exerciseCountList.length; i++){
         if(exerciseCountList[i]["exercise"] == "Squat"){
           exerciseCountList[i]["count"] = (exerciseCountList[i]["count"] as double)+  value["Squat"]["count"];
@@ -172,11 +133,33 @@ class _CalendarModalState extends State<CalendarModal> {
     print(exerciseCountList);
   }
 
+  void setRecord(){
+    // Map<String, dynamic>
+    // print(widget.record);
+    String formattedDate = "";
+    Map<String, dynamic> dateRecord = {};
+    for(int i = 0; i < 7; i++){
+      DateTime? date = widget.selectedDay?.subtract(Duration(days: i));
+      if (date != null) {
+        formattedDate = DateFormat('yyyy-MM-dd').format(date);
+        if(widget.record[formattedDate] != null){
+          print("********${widget.record[formattedDate]}");
+           {
+             dateRecord[formattedDate] = widget.record[formattedDate];
+          };
+        }
+      }
+    }
+    exerciseData.add(dateRecord);
+    print(exerciseData);
+    loadWeekKcal();
+    loadWeekExercise();
+  }
+
   @override
   void initState() {
     super.initState();
-    loadWeekKcal();
-    loadWeekExercise();
+    setRecord();
   }
   int touchedIndex = -1;
 
@@ -296,14 +279,14 @@ class _CalendarModalState extends State<CalendarModal> {
                   children: [
                     PieChartIndicator(
                       color: AppColors.pieColorOrange,
-                      text: '팔굽혀펴기',
+                      text: '스쿼트',
                     ),
                     SizedBox(
                       height: 4,
                     ),
                     PieChartIndicator(
                       color: AppColors.pieColorYellow,
-                      text: '스쿼트',
+                      text: '팔굽혀펴기',
                     ),
                     SizedBox(
                       height: 4,

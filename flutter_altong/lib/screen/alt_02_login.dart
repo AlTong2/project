@@ -71,14 +71,14 @@ class _ALT02LoginState extends State<ALT02Login> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("아직 회원이 아니시라면 ?", style :TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.04)),
+                    Text("아직 회원이 아니시라면 ?", style :TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03)),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width* 0.2,
+                      width: MediaQuery.of(context).size.width* 0.3,
                       child: TextButton(
                         onPressed: () {
 
                         },
-                        child: Text("회원가입", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.04)),
+                        child: Text("회원가입", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03)),
                       ),
                     ),
                   ],

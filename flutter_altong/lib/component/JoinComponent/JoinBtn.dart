@@ -19,7 +19,7 @@ class JoinBtn extends StatelessWidget {
               )
           ),
           onPressed: btnFunc,
-          child: Text(text, style: TextStyle(fontFamily: 'pre'))),
+          child: Text(text, style: TextStyle(color: Colors.white, fontFamily: 'pre'))),
     );
   }
 }

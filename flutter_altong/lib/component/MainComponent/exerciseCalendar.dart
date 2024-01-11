@@ -3,8 +3,9 @@ import 'package:flutter_altong/component/MainComponent/calendarModal.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class ExerciseCarlendar extends StatefulWidget {
-  const ExerciseCarlendar({super.key});
-
+  const ExerciseCarlendar({super.key, required this.recordDay, required this.record});
+  final List<String> recordDay;
+  final Map<dynamic, dynamic> record;
   @override
   State<ExerciseCarlendar> createState() => _ExerciseCarlendarState();
 }
@@ -15,24 +16,28 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   List<String> days = ['_', '월', '화', '수', '목', '금', '토', '일'];
   // TODO 로그인시 해당 유저의 운동한 날짜만 받아와서 데이터 넣기
-  final Map<DateTime?, dynamic> _events = {
-    DateTime(2023, 12, 18) : DateTime(2023, 12, 18),
-    DateTime(2023, 12, 19) : DateTime(2023, 12, 19),
-    DateTime(2023, 12, 20) : DateTime(2023, 12, 20),
-    DateTime(2023, 12, 21) : DateTime(2023, 12, 21),
-    DateTime(2023, 12, 22) : DateTime(2023, 12, 22),
-    DateTime(2023, 12, 23) : DateTime(2023, 12, 23),
-    DateTime(2023, 12, 29) : DateTime(2023, 12, 29),
-    DateTime(2024, 1, 3) : DateTime(2024, 1, 3),
-    DateTime(2024, 1, 4) : DateTime(2024, 1, 4)
-  };
+  final Map<DateTime?, dynamic> _events = {};
 
   @override
   void initState() {
     super.initState();
     _now = DateTime.now();
+    setEvent();
   }
 
+  void setEvent(){
+    widget.recordDay;
+    for(int i = 0; i < widget.recordDay.length ; i++){
+      List<String> ydm = widget.recordDay[i].split("-"); // 년, 월, 일을 분할하여 리스트로 가져옴
+      int year = int.parse(ydm[0]);
+      int month = int.parse(ydm[1]);
+      int day = int.parse(ydm[2]);
+
+      // DateTime 객체를 생성하여 _events 맵에 추가
+      DateTime dateKey = DateTime(year, month, day);
+      _events[dateKey] = dateKey;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +82,7 @@ class _ExerciseCarlendarState extends State<ExerciseCarlendar> {
                 context: context,
                 isScrollControlled: true,
                 builder: (BuildContext context) {
-                  // TODO 해당날짜를 불렀을때 컨트롤러로 이동하게 수정 ? 날짜 받아오기 아니면 날짜가지고 modal안에서 설정 ?
-                  return CalendarModal(selectedDay: selectedDay);
+                  return CalendarModal(selectedDay: selectedDay, record: widget.record,);
                 },
               );
             }
