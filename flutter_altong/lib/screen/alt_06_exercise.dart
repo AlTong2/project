@@ -147,7 +147,38 @@ class ALT06Exercise extends StatelessWidget {
                     } // obx function end
                   ),
                 ),
-                Center(child: ExerciseScreenBtn(text: "루틴 시작",  exerciseFunc: () => Get.find<ExerciseController>().startRoutine() ,))
+                Center(child: ExerciseScreenBtn(text: "루틴 시작",
+                  exerciseFunc: () {
+                  // 루틴 시작
+                  Get.find<ExerciseController>().startRoutine();
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                        content: Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          child: ListView(
+                            children: [
+                              SizedBox(height: 20,),
+                              Obx(
+                              (){ return Center(child: Text(Get.find<ExerciseController>().curState.value, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.03, fontFamily: 'pre'),));}),
+                              SizedBox(height: 40,),
+                              ElevatedButton(onPressed: () {
+                                Get.back();
+                              },
+                                  child: Text("확인", style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.03, fontFamily: 'pre'),)),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }))
               ],
             ),
           ),

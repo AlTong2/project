@@ -3,6 +3,7 @@ import 'package:flutter_altong/component/LoginComponent/loginBtn.dart';
 import 'package:flutter_altong/component/LoginComponent/loginPasswordTextField.dart';
 import 'package:flutter_altong/component/LoginComponent/loginTextField.dart';
 import 'package:flutter_altong/constants/constants.dart';
+import 'package:flutter_altong/controller/alt_01_startController.dart';
 import 'package:flutter_altong/controller/alt_02_loginController.dart';
 import 'package:get/get.dart';
 
@@ -76,7 +77,7 @@ class _ALT02LoginState extends State<ALT02Login> {
                       width: MediaQuery.of(context).size.width* 0.3,
                       child: TextButton(
                         onPressed: () {
-
+                              Get.find<StartController>().toJoin();
                         },
                         child: Text("회원가입", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03)),
                       ),

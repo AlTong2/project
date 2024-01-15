@@ -5,6 +5,7 @@ import 'package:flutter_altong/component/JoinComponent/joinTextField.dart';
 import 'package:flutter_altong/component/JoinComponent/kcalTextField.dart';
 import 'package:flutter_altong/component/LoginComponent/loginPasswordTextField.dart';
 import 'package:flutter_altong/constants/constants.dart';
+import 'package:flutter_altong/controller/alt_01_startController.dart';
 import 'package:flutter_altong/controller/alt_03_joinController.dart';
 import 'package:get/get.dart';
 
@@ -110,7 +111,7 @@ class _ALT03JoinState extends State<ALT03Join> {
                         width: MediaQuery.of(context).size.width* 0.2,
                         child: TextButton(
                           onPressed: () {
-
+                            Get.find<StartController>().toLogin();
                           },
                           child: Text("로그인", style: TextStyle(fontFamily: 'pre', fontSize: MediaQuery.of(context).size.width * 0.03)),
                         ),

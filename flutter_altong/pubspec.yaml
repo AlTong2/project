@@ -51,6 +51,7 @@ dependencies:
   http: ^1.1.0
   flutter_blue_plus:
   intl: ^0.18.1
+  video_player: ^2.8.2
 
 
 dev_dependencies:
@@ -86,6 +87,9 @@ flutter:
     - img/altong_muscle.png
     - img/altong_my.png
     - img/launch_image_op.png
+    - img/PullUp.gif
+    - img/PushUp.gif
+    - img/Squat.gif
     - assets/config/.env
   #   - images/a_dot_ham.jpeg
 

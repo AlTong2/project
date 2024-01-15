@@ -23,6 +23,7 @@ class ALT10RoutineSetting extends StatelessWidget {
     Get.put(RoutineController());
     return GestureDetector(
       onTap: () {
+        Get.find<RoutineController>().updateText(routineNameCon.text);
         FocusScope.of(context).unfocus();
       },
       child:
@@ -57,7 +58,7 @@ class ALT10RoutineSetting extends StatelessWidget {
                           routineNameCon.text = routineName;
                           return TextField(
                             controller: routineNameCon,
-                            onChanged: (value) {Get.find<RoutineController>().updateText(value);},
+                            // onChanged: (value) {Get.find<RoutineController>().updateText(value);},
                             decoration: InputDecoration(
                               label: Text('루틴 명')
                             ),

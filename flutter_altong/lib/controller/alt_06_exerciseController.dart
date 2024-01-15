@@ -16,7 +16,8 @@ class ExerciseController extends GetxController{
   RxList<dynamic> routineList = [].obs;
   //선택한 루틴 키값
   RxString selectKey = "".obs;
-
+  // 현재 실행중인지 판단
+  RxString curState = "".obs;
   RxInt count = 0.obs;
   RxInt set = 0.obs;
   RxInt rest = 0.obs;
@@ -140,9 +141,18 @@ class ExerciseController extends GetxController{
       updateRoutineName.value = "";
       String user = await getFirebaseUserName();
       int kcal = await getFirebaseUserKcal();
+      Map<dynamic, dynamic> record = await getExerciseRecord();
+      int curKcal = getCurrentKcal(record);
+      List<String> recordDay = [];
+      record.keys.forEach((key) {
+        recordDay.add(key.toString()); // 각 키를 String으로 변환하여 리스트에 추가
+      });
       Map<String, dynamic> arguments = {
         'user': user,
-        'kcal': kcal
+        'kcal': kcal,
+        'recordDay' : recordDay,
+        'record' : record,
+        'curKcal' : curKcal
       };
       Get.offAllNamed("/main", arguments: arguments);
     }
@@ -161,20 +171,24 @@ class ExerciseController extends GetxController{
   void startRoutine() async {
     // 루틴 시작
     print("루틴 시작");
+    curState.value = "로딩중입니다.";
     // 1 . 루틴 데이터 확인 firebase에서 해당 데이터 있는지 확인
     routineState.value = await dbService.checkRoutine();
     print("상태 확인${routineState.value}");
     // true일 경우 pass
     if(routineState.value){
+      curState.value = "이미 진행중인 루틴이 있습니다.";
       print("진행중인 루트가 있음");
     } else {
       // 현재 루틴에 진행할 루틴 저장
       if(selectKey != ""){
+        curState.value = "루틴을 진행합니다.";
         print("선택한 운동 키값 : ${selectKey}");
         // selectKey값을 보내어 해당 루틴의 정보를 current_routine 테이블에 저장
         await dbService.setCurrentRoutine(selectKey.value);
       } else {
         print("운동 선택 안됨");
+        curState.value = "운동을 선택해주세요.";
       }
     }
   }

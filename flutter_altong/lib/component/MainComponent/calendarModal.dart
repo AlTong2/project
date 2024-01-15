@@ -1,7 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_altong/component/MainComponent/chartIndicator.dart';
+import 'package:flutter_altong/component/MainComponent/checkVideo.dart';
 import 'package:flutter_altong/constants/constants.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class CalendarModal extends StatefulWidget {
@@ -42,6 +44,8 @@ class _CalendarModalState extends State<CalendarModal> {
   ];
   List<Map> kcalList = [];
   List<Map> exerciseCountList = [];
+  List<dynamic> videoPathList = [];
+  List<String> exerciseImg = [];
   double sumCount = 0.toDouble();
 
   void loadWeekKcal(){
@@ -75,17 +79,22 @@ class _CalendarModalState extends State<CalendarModal> {
 
         dynamic value = exerciseData[0][key]; // 각 키에 해당하는 값 가져오기
         // print("키: $key, 값: $value");
-
+        if(value["Squat"] != null){
           if(kcalList[j]["day"] == weekDays[value["Squat"]["weekday"]-1]){
             kcalList[j]["kcal"] = kcalList[j]["kcal"] + ((value["Squat"]["count"] * 0.7));
           }
-
+        }
+          // firebase 에 해당날의 ["PushUp"] 이 없을 경우 에러
+        if(value["PushUp"] != null){
           if(kcalList[j]["day"] == weekDays[value["PushUp"]["weekday"]-1]){
             kcalList[j]["kcal"] = kcalList[j]["kcal"] + ((value["PushUp"]["count"] * 0.47));
           }
-
-        if(kcalList[j]["day"] == weekDays[value["PullUp"]["weekday"]-1]){
-          kcalList[j]["kcal"] = kcalList[j]["kcal"] + ((value["PullUp"]["count"] * 0.3));
+        }
+        if(value["PullUp"] != null) {
+          if (kcalList[j]["day"] == weekDays[value["PullUp"]["weekday"] - 1]) {
+            kcalList[j]["kcal"] =
+                kcalList[j]["kcal"] + ((value["PullUp"]["count"] * 0.3));
+          }
         }
       }
     }
@@ -98,7 +107,6 @@ class _CalendarModalState extends State<CalendarModal> {
     if(exerciseData.length != 0){
       // keys = exerciseData.map((entry) => entry.keys.first).toList();
       keys = exerciseData[0].keys.toList();
-      print("키킼;키 :${keys}");
     }
     List<String> exercise = [
       'Squat',
@@ -116,21 +124,56 @@ class _CalendarModalState extends State<CalendarModal> {
     for (String key in keys) {
       dynamic value = exerciseData[0][key]; // 각 키에 해당하는 값 가져오기
       for(int i = 0; i < exerciseCountList.length; i++){
-        if(exerciseCountList[i]["exercise"] == "Squat"){
-          exerciseCountList[i]["count"] = (exerciseCountList[i]["count"] as double)+  value["Squat"]["count"];
-          sumCount =  sumCount + value["Squat"]["count"];
+        if(value["Squat"] != null){
+          if(exerciseCountList[i]["exercise"] == "Squat"){
+            exerciseCountList[i]["count"] = (exerciseCountList[i]["count"] as double)+  value["Squat"]["count"];
+            sumCount =  sumCount + value["Squat"]["count"];
+          }
         }
-        if(exerciseCountList[i]["exercise"] == "PushUp"){
-          exerciseCountList[i]["count"] = (exerciseCountList[i]["count"] as double)+  value["PushUp"]["count"];
-          sumCount =  sumCount + value["PushUp"]["count"];
+        if(value["PushUp"] != null){
+          if(exerciseCountList[i]["exercise"] == "PushUp"){
+            exerciseCountList[i]["count"] = (exerciseCountList[i]["count"] as double)+  value["PushUp"]["count"];
+            sumCount =  sumCount + value["PushUp"]["count"];
+          }
         }
-        if(exerciseCountList[i]["exercise"] == "PullUp"){
-          exerciseCountList[i]["count"] = (exerciseCountList[i]["count"] as double)+  value["PullUp"]["count"];
-          sumCount =  sumCount + value["PullUp"]["count"];
+        if(value["PullUp"] != null){
+          if(exerciseCountList[i]["exercise"] == "PullUp"){
+            exerciseCountList[i]["count"] = (exerciseCountList[i]["count"] as double)+  value["PullUp"]["count"];
+            sumCount =  sumCount + value["PullUp"]["count"];
+          }
         }
       }
     }
     print(exerciseCountList);
+  }
+
+  void getVideoList(){
+    DateTime? selectDay = widget.selectedDay;
+    String selDate = DateFormat('yyyy-MM-dd').format(selectDay!);
+    print("선택 날짜 비디오 데이터 가져오기");
+    print("++++++${exerciseData[0]}");
+    print("++++++${exerciseData[0][selDate]}");
+    if(exerciseData[0][selDate] != null){
+    if(exerciseData[0][selDate]["Squat"] != null){
+      videoPathList.addAll(exerciseData[0][selDate]["Squat"]["path"]);
+      for (String path in exerciseData[0][selDate]["Squat"]["path"]) {
+        exerciseImg.add('img/Squat.gif');
+      }
+    }
+    if(exerciseData[0][selDate]["PushUp"] != null){
+      videoPathList.addAll(exerciseData[0][selDate]["PushUp"]["path"]);
+      for (String path in exerciseData[0][selDate]["PushUp"]["path"]) {
+        exerciseImg.add('img/PushUp.gif');
+      }
+    }
+    if(exerciseData[0][selDate]["PullUp"] != null){
+      videoPathList.addAll(exerciseData[0][selDate]["PullUp"]["path"]);
+      for (String path in exerciseData[0][selDate]["PullUp"]["path"]) {
+        exerciseImg.add('img/PullUp.gif');
+      }
+    }
+    print("VideoPath : ${videoPathList}, imgList : ${exerciseImg}");
+    }
   }
 
   void setRecord(){
@@ -154,6 +197,7 @@ class _CalendarModalState extends State<CalendarModal> {
     print(exerciseData);
     loadWeekKcal();
     loadWeekExercise();
+    getVideoList();
   }
 
   @override
@@ -400,19 +444,26 @@ class _CalendarModalState extends State<CalendarModal> {
             ),
           ),
           Container(
-            height: 400,
-            child: ListView(
+            height: 400,//videoPathList
+            child: ListView.builder(
+                   itemCount: videoPathList.length,
+                    itemBuilder: (context, index) {
+                     return TextButton(onPressed: () { Get.to(CheckVideo(name: videoPathList[index], img: exerciseImg[index],)); },
+                         child:
+                     Text( videoPathList[index], textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.04 )));
+                    })
+            /*ListView(
               children: [
-                TextButton(onPressed: () {
+                TextButton(onPressed: () { Get.to(CheckVideo());
                 }, child: Text("20240104_Squat_01.mp4", textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.04 ))),
-                TextButton(onPressed: () {
+                TextButton(onPressed: () { CheckVideo();
                 }, child: Text("20240104_Squat_02.mp4", textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.04 ))),
-                TextButton(onPressed: () {
+                TextButton(onPressed: () { CheckVideo();
                 }, child: Text("20240104_PullUp_01.mp4", textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.04 ))),
-                TextButton(onPressed: () {
+                TextButton(onPressed: () { CheckVideo();
                 }, child: Text("20240104_PullUp_02.mp4", textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width* 0.04 )))
               ],
-            ),
+            ),*/
           )
         ],
       ),
