@@ -59,7 +59,8 @@
 
 
 # 🤖 하드웨어
-- ![image](https://github.com/AlTong2/.github/assets/145187636/d5280c25-ad78-4fe1-8ade-5a1dec1cb9aa)
+- ![image](https://github.com/AlTong2/project/assets/145187636/32a7bf1a-5f1a-4309-94c1-61260cc114f9)
+
 
 
 # 👨‍👩‍👦‍👦 팀원역할
