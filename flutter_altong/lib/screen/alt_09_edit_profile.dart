@@ -105,7 +105,23 @@ class _ALT09EditProfilePageState extends State<ALT09EditProfilePage> {
                       LoginPasswordTextField(icon: Icons.key, text: passwordConfirm, con: pwConfirmCon, validator: null,),
                       KcalTextField(icon: Icons.directions_run, text: changeKcal, con: kcalCon),
                       SizedBox(height: 25,),
-                      EditButton(text: "수정하기", btnFunc: ()=> Get.find<MyPageController>().updateUser(nameCon.text, curCon.text, pwCon.text, kcalCon.text), color: AppColors.mainColor)
+                      EditButton(text: "수정하기", btnFunc: (){
+                        if(pwCon.text == pwConfirmCon.text){
+                          Get.find<MyPageController>().updateUser(nameCon.text, curCon.text, pwCon.text, kcalCon.text);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('비밀번호를 확인 해주세요.'),
+                              duration: Duration(seconds: 3), // Snackbar 표시 시간
+                              action: SnackBarAction(
+                                label: '닫기',
+                                onPressed: () {
+                                },
+                              ),
+                            ),
+                          );
+                        }
+                      }, color: AppColors.mainColor)
                     ],
                   ),
                 ],

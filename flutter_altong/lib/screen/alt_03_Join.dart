@@ -119,7 +119,25 @@ class _ALT03JoinState extends State<ALT03Join> {
                     ],
                   ),
                   SizedBox(height:10,),
-                  JoinBtn(text: joinText, btnFunc: () => Get.find<JoinController>().joinFunc(emailCon.text, pwCon.text, nameCon.text, kcalCon.text), color: AppColors.mainColor),
+                  JoinBtn(text: joinText, btnFunc: (){
+                    if(pwCon.text == pwConfirmCon.text){
+                      Get.find<JoinController>().joinFunc(emailCon.text, pwCon.text, nameCon.text, kcalCon.text);
+                    }else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('비밀번호를 확인 해주세요.'),
+                          duration: Duration(seconds: 3), // Snackbar 표시 시간
+                          action: SnackBarAction(
+                            label: '닫기',
+                            onPressed: () {
+
+                            },
+                          ),
+                        ),
+                      );
+                    }
+
+                    }, color: AppColors.mainColor),
                 ],
               ),
             ),

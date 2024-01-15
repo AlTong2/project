@@ -60,7 +60,7 @@ class _ALT07MyPageState extends State<ALT07MyPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  MyPageBtn(text: "블루투스 연결", btnFunc: (){
+                  /*MyPageBtn(text: "블루투스 연결", btnFunc: (){
                     Get.find<MyPageController>().getConnectedDevices();
                     Get.find<MyPageController>().scanBluetoothDevices();
                     showDialog(
@@ -86,12 +86,12 @@ class _ALT07MyPageState extends State<ALT07MyPage> {
                         );
                       },
                     );
-                  }),
+                  }),*/
                   // MyPageBtn(text: "블루투스 연결", btnFunc: (){}),
                   MyPageBtn(text: "로그아웃", btnFunc: ()=> Get.find<MyPageController>().logout()),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(top:MediaQuery.of(context).size.height*0.155,left:MediaQuery.of(context).size.width*0.25),
+                    margin: EdgeInsets.only(top:MediaQuery.of(context).size.height*0.235,left:MediaQuery.of(context).size.width*0.25),
                     child: Stack(
                       children: [
                         Opacity(
