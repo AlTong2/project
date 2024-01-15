@@ -23,7 +23,7 @@ class ExerciseProgress extends StatelessWidget {
         percent: percent,
         lineHeight: 40,
         backgroundColor: AppColors.progressBarBackground,
-        progressColor: AppColors.progressBarGauge,
+        progressColor: AppColors.pieColorYellow,
         width: MediaQuery.of(context).size.width,
         barRadius: Radius.circular(10),
       ),
@@ -32,11 +32,11 @@ class ExerciseProgress extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
-            child: Text(curKcal, style: TextStyle(fontSize: 12),),
+            child: Text(curKcal, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.03),),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
-            child: Text(glKcal, style: TextStyle(fontSize: 12),),
+            child: Text(glKcal, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.03),),
           ),
         ],
       )

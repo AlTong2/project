@@ -14,12 +14,12 @@ class UpdateRoutineList extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Expanded(flex:1,child: SizedBox(width: 20),),
-        Expanded(flex:3,child: Text(exerciseName, textAlign: TextAlign.left,style: TextStyle(fontSize: 12))),
-        Expanded(flex:3,child: Text("${count}개 / ${set}세트", textAlign: TextAlign.left,style: TextStyle(fontSize: 12),)),
+        Expanded(flex:3,child: Text(exerciseName, textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.03, fontFamily: 'pre'))),
+        Expanded(flex:3,child: Text("${count}개 / ${set}세트", textAlign: TextAlign.left,style: TextStyle( fontSize: MediaQuery.of(context).size.width * 0.03, fontFamily: 'pre'),)),
         Expanded(flex:2,child: TextButton(onPressed: () {
           print("${num} 번 삭제 메소드");
           Get.find<ExerciseController>().deleteExercise(num);
-        }, child: Text("삭제", textAlign: TextAlign.left,style: TextStyle(fontSize: 12),)))
+        }, child: Text("삭제", textAlign: TextAlign.left,style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.03, fontFamily: 'pre'),)))
       ],
     );
   }

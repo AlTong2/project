@@ -9,7 +9,7 @@ class UpdateExerciseRadio extends StatelessWidget {
   Widget build(BuildContext context) {
     return RadioListTile<String>(
       controlAffinity: ListTileControlAffinity.leading,
-      title: Text("$exercise", style: TextStyle(fontSize: 14)),
+      title: Text("$exercise", style: TextStyle(fontSize: MediaQuery.of(context).size.width *0.035, fontFamily: 'pre')),
       value: exercise,
       groupValue: groupValue,
       onChanged: func,

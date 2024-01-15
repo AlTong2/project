@@ -8,8 +8,8 @@ class EditButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250,
-      height: 60,
+      width: MediaQuery.of(context).size.width *0.75,
+      height: MediaQuery.of(context).size.height *0.08,
       padding: EdgeInsets.all(5),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -19,7 +19,7 @@ class EditButton extends StatelessWidget {
               )
           ),
           onPressed: btnFunc,
-          child: Text(text)),
+          child: Text(text, style: TextStyle(fontFamily: 'pre'),)),
     );
   }
 

@@ -49,6 +49,9 @@ dependencies:
   flutter_keyboard_visibility: ^6.0.0
   fl_chart: ^0.62.0
   http: ^1.1.0
+  flutter_blue_plus:
+  intl: ^0.18.1
+  video_player: ^2.8.2
 
 
 dev_dependencies:
@@ -78,6 +81,15 @@ flutter:
     - img/logo_altong.gif
     - img/running.png
     - img/altong_profile.png
+    - img/logo.png
+    - img/gpt_icon_white.png
+    - img/altong_normal.png
+    - img/altong_muscle.png
+    - img/altong_my.png
+    - img/launch_image_op.png
+    - img/PullUp.gif
+    - img/PushUp.gif
+    - img/Squat.gif
     - assets/config/.env
   #   - images/a_dot_ham.jpeg
 
@@ -92,17 +104,18 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: pre
+      fonts:
+        - asset: assets/fonts/PretendardVariable.ttf
+    - family: se
+      fonts:
+        - asset: assets/fonts/Sejong hospital Bold.ttf
+    - family: kuk
+      fonts:
+        - asset: assets/fonts/NPSfont_regular.ttf
+  #      - asset: fonts/TrajanPro_Bold.ttf
+  #        weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

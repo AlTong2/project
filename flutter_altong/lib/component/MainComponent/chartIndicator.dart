@@ -10,8 +10,8 @@ class PieChartIndicator extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 5),
       child: Row(
         children: [
-          Icon(Icons.square, color: color,size: 15,),
-          Text(text, style: TextStyle(fontSize: 12),)
+          Icon(Icons.square, color: color,size: MediaQuery.of(context).size.width*0.04,),
+          Text(text, style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.03, fontFamily: 'pre'),)
         ],
       ),
     );

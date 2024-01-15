@@ -23,6 +23,7 @@ class ALT10RoutineSetting extends StatelessWidget {
     Get.put(RoutineController());
     return GestureDetector(
       onTap: () {
+        Get.find<RoutineController>().updateText(routineNameCon.text);
         FocusScope.of(context).unfocus();
       },
       child:
@@ -46,7 +47,7 @@ class ALT10RoutineSetting extends StatelessWidget {
               // physics: NeverScrollableScrollPhysics(),
               children: [
                 Container(
-                  width: double.infinity,
+                  width: MediaQuery.of(context).size.width,
                   child: Center(
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width * 0.85,
@@ -57,7 +58,7 @@ class ALT10RoutineSetting extends StatelessWidget {
                           routineNameCon.text = routineName;
                           return TextField(
                             controller: routineNameCon,
-                            onChanged: (value) {Get.find<RoutineController>().updateText(value);},
+                            // onChanged: (value) {Get.find<RoutineController>().updateText(value);},
                             decoration: InputDecoration(
                               label: Text('루틴 명')
                             ),
@@ -71,8 +72,8 @@ class ALT10RoutineSetting extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text("운동명", style: TextStyle(fontSize: 16)),
-                    Text("개수 / 세트", style: TextStyle(fontSize: 16)),
+                    Text("운동명", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
+                    Text("개수 / 세트", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04)),
                     SizedBox(width: 20,),
                   ],
                 ),
@@ -87,19 +88,40 @@ class ALT10RoutineSetting extends StatelessWidget {
                       itemBuilder:
                         (context, index) {
                           return ListTile(
-                            title: RoutineList(exerciseName: Get.find<RoutineController>().routine[index]["exercise"],
-                                count: Get.find<RoutineController>().routine[index]["count"],
-                                set: Get.find<RoutineController>().routine[index]["set"],
-                                num: index,
+                            title: Padding(
+                              padding: const EdgeInsets.only(top: 0),
+                              child: RoutineList(exerciseName: Get.find<RoutineController>().routine[index]["exercise"],
+                                  count: Get.find<RoutineController>().routine[index]["count"],
+                                  set: Get.find<RoutineController>().routine[index]["set"],
+                                  num: index,
+                              ),
                             )
                           );
                         },
                     )),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 10,),
+                Container(
+                  margin: EdgeInsets.only(left: 10,right: 10),
+                  height: 1,
+                  width: MediaQuery.of(context).size.width *0.85,
+                  decoration:BoxDecoration(
+                      color: AppColors.lineGrey
+                  ),
+                ),
+                SizedBox(height: 10,),
                 // 운동 설정
                 SetExercise(),
-                SizedBox(height: 20,),
+                SizedBox(height: 10,),
+                Container(
+                  margin: EdgeInsets.only(left: 10,right: 10),
+                  height: 1,
+                  width: MediaQuery.of(context).size.width *0.85,
+                  decoration:BoxDecoration(
+                      color: AppColors.lineGrey
+                  ),
+                ),
+                SizedBox(height: 10,),
                 // 휴식시간 설정
                 SetRestTime(),
                 SizedBox(

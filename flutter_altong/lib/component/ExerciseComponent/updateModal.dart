@@ -60,82 +60,112 @@ class _UpdateModalState extends State<UpdateModal> {
   @override
   Widget build(BuildContext context) {
     TextEditingController routineNameCon = TextEditingController();
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.9,
-      child: ListView(
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 20),
-            width: double.infinity,
-            child: Center(
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: Obx(
-                        () {
-                      final routineController = Get.find<ExerciseController>();
-                      final routineName = routineController.updateRoutineName.value;
-                      routineNameCon.text = routineName;
-                      return TextField(
-                        controller: routineNameCon,
-                        onChanged: (value) {Get.find<ExerciseController>().updateRoutineNameText(value);},
-                        decoration: InputDecoration(
-                            label: Text('루틴 명', style: TextStyle(fontSize: 18))
-                        ),
-                      );
-                    }
+    return GestureDetector(
+      onTap: () {
+        Get.find<ExerciseController>().updateRoutineNameText(routineNameCon.text);
+        FocusScope.of(context).unfocus();
+      },
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.9,
+        child: ListView(
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              width: double.infinity,
+              child: Center(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: Obx(
+                          () {
+                        final routineController = Get.find<ExerciseController>();
+                        final routineName = routineController.updateRoutineName.value;
+                        routineNameCon.text = routineName;
+                        return TextField(
+                          onEditingComplete: () {
+                            // 완료 버튼 누를 때의 동작 정의
+                            // 예: 다른 포커스로 이동하거나 키보드 숨김
+                            Get.find<ExerciseController>().updateRoutineNameText(routineNameCon.text);
+                            FocusScope.of(context).unfocus();
+                          },
+                          controller: routineNameCon,
+                          // onChanged: (value) {Get.find<ExerciseController>().updateRoutineNameText(value);},
+                          decoration: InputDecoration(
+                              label: Text('루틴 명', style: TextStyle(fontSize:MediaQuery.of(context).size.width * 0.04, fontFamily: 'pre'))
+                          ),
+                        );
+                      }
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 15,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text("운동명", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-              Text("개수 / 세트", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
-              SizedBox(width: 20,),
-            ],
-          ),
-          Container(
-            height: 150,
-            child:
-            Obx(() => ListView.builder(
-              physics: AlwaysScrollableScrollPhysics(),
-              //shrinkWrap: true,
-              //physics: NeverScrollableScrollPhysics(),
-              itemCount: Get.find<ExerciseController>().updateRoutineList.length,
-              itemBuilder:
-                  (context, index) {
-                return ListTile(
-                    title: UpdateRoutineList(exerciseName: Get.find<ExerciseController>().updateRoutineList[index]["exercise"],
-                      count: Get.find<ExerciseController>().updateRoutineList[index]["count"],
-                      set: Get.find<ExerciseController>().updateRoutineList[index]["set"],
-                      num: index,
-                    )
-                );
-              },
-            )),
-          ),
-          SizedBox(height: 20,),
-          UpdateAddExercise(),
-          SizedBox(height: 15,),
-          UpdateSetRest(),
-          SizedBox(
-            child: Center(
-              child: Container(
-                  width: MediaQuery.of(context).size.width * 0.85,
-                  margin: EdgeInsets.only(top: 10),
-                  child: MediumButton(text: "루틴 수정하기",
-                      btnFunc: (){
-                        Get.find<ExerciseController>().updateRoutine();
-                      },
-                      color: AppColors.mainColor)
+            SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text("운동명", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,fontFamily: 'pre', fontWeight: FontWeight.w500)),
+                Text("개수 / 세트", style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.04,fontFamily: 'pre', fontWeight: FontWeight.w500)),
+                SizedBox(width: 20,),
+              ],
+            ),
+            Container(
+              height: 150,
+              child:
+              Obx(() => ListView.builder(
+                physics: AlwaysScrollableScrollPhysics(),
+                //shrinkWrap: true,
+                //physics: NeverScrollableScrollPhysics(),
+                itemCount: Get.find<ExerciseController>().updateRoutineList.length,
+                itemBuilder:
+                    (context, index) {
+                  return ListTile(
+                      title: UpdateRoutineList(exerciseName: Get.find<ExerciseController>().updateRoutineList[index]["exercise"],
+                        count: Get.find<ExerciseController>().updateRoutineList[index]["count"],
+                        set: Get.find<ExerciseController>().updateRoutineList[index]["set"],
+                        num: index,
+                      )
+                  );
+                },
+              )),
+            ),
+            SizedBox(height: 10,),
+            Container(
+              margin: EdgeInsets.only(left: 10,right: 10),
+              height: 1,
+              width: MediaQuery.of(context).size.width *0.85,
+              decoration:BoxDecoration(
+                  color: AppColors.lineGrey
               ),
             ),
-          )
-        ],// End ListView children
-      )
+            SizedBox(height: 10,),
+            UpdateAddExercise(),
+            SizedBox(height: 10,),
+            Container(
+              margin: EdgeInsets.only(left: 10,right: 10),
+              height: 1,
+              width: MediaQuery.of(context).size.width *0.85,
+              decoration:BoxDecoration(
+                  color: AppColors.lineGrey
+              ),
+            ),
+            SizedBox(height: 10,),
+            UpdateSetRest(),
+            SizedBox(
+              child: Center(
+                child: Container(
+                    width: MediaQuery.of(context).size.width * 0.85,
+                    margin: EdgeInsets.only(top: 10),
+                    child: MediumButton(text: "루틴 수정하기",
+                        btnFunc: (){
+                          Get.find<ExerciseController>().updateRoutine();
+                        },
+                        color: AppColors.mainColor)
+                ),
+              ),
+            )
+          ],// End ListView children
+        )
+      ),
     );
   }
 }

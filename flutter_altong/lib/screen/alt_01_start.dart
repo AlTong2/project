@@ -26,6 +26,7 @@ class ALT01Start extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                MainImg(image: Image.asset("img/logo.png", width: 250,height: 200,),),
                 MainImg(image: Image.asset("img/logo_altong.gif", width: 200,height: 200,),),
                 MainBtn(text: loginBtnText, btnFunc: () => Get.find<StartController>().toLogin(), color: AppColors.mainColor),
                 MainBtn(text: joinBtnText, btnFunc: () => Get.find<StartController>().toJoin(), color: AppColors.mainColor),
